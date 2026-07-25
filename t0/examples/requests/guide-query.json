@@ -1,0 +1,21 @@
+{
+  "session_id": "museum-demo-001",
+  "source_language": "auto",
+  "target_language": "en",
+  "input": {
+    "type": "text",
+    "text": "这项工艺的文化寓意是什么？"
+  },
+  "audience": {
+    "region": "Southeast Asia",
+    "age_band": "adult",
+    "knowledge_level": "beginner",
+    "style": "story"
+  },
+  "options": {
+    "top_k": 5,
+    "return_audio": true,
+    "include_graph_context": true,
+    "debug": true
+  }
+}
