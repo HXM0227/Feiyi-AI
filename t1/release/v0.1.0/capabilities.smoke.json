@@ -1,0 +1,15 @@
+{
+  "module": "T1",
+  "contract_version": "1.0.0",
+  "media_types": [
+    "text",
+    "document"
+  ],
+  "pre_extracted_media_types": [
+    "image",
+    "audio",
+    "video"
+  ],
+  "max_documents": 100,
+  "max_chunk_chars": 800
+}

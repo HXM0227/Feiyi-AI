@@ -1,0 +1,2 @@
+﻿source_id,title,source_uri,media_type,authorization_status,language,version,reviewer,content_hash,chunk_count,publish,review_status
+SRC-DEMO-001,非遗项目示例资料,https://example.org/ich/demo/history,text,authorized,zh-CN,1.0,项目组抽样复核,<generated-by-service>,1,false,pending
