@@ -1,0 +1,13 @@
+{
+  "query": "剪纸的文化寓意是什么？",
+  "detected_language": "zh-CN",
+  "target_language": "en",
+  "audience": {"region": "Southeast Asia", "knowledge_level": "beginner", "style": "story"},
+  "context": [
+    {"citation_id": "CIT-001", "source_id": "SRC-DEMO-001", "title": "剪纸示例资料", "section": "工艺与寓意", "uri": "https://example.org/ich/paper-cutting", "excerpt": "剪纸以剪刀或刻刀在纸上制作图案；常见纹样寄托人们对团圆、吉祥和美好生活的愿望。", "score": 0.95},
+    {"citation_id": "CIT-002", "source_id": "SRC-DEMO-002", "title": "传承人口述记录", "section": "讲解注意事项", "uri": "https://example.org/ich/paper-cutting/oral-history", "excerpt": "讲解文化寓意时，应结合具体纹样和使用场景，避免将不同地区的习俗概括为统一事实。", "score": 0.89}
+  ],
+  "graph_context": {"constraints": ["专名首次出现保留中文", "区分史实与文化类比"]},
+  "adaptation": {"policy_version": "demo-1", "instructions": ["面向初学者，采用故事化但准确的表达"]},
+  "requirements": {"citation_format": "[citation_id]", "must_use_context": true, "separate_fact_and_analogy": true}
+}

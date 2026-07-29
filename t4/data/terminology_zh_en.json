@@ -1,0 +1,11 @@
+{
+  "version": "1.0.0",
+  "terms": [
+    {"zh": "非物质文化遗产", "en": "intangible cultural heritage", "preserve_zh_first": false, "note": "首次出现可附 ICH 缩写"},
+    {"zh": "非遗", "en": "intangible cultural heritage", "preserve_zh_first": false, "note": "中文简称"},
+    {"zh": "剪纸", "en": "Paper Cutting (剪纸)", "preserve_zh_first": true, "note": "项目名首次出现保留中文"},
+    {"zh": "工艺", "en": "craft technique", "preserve_zh_first": false, "note": "按语境可用 craft"},
+    {"zh": "文化寓意", "en": "cultural meaning", "preserve_zh_first": false, "note": "不得将类比表述为事实"},
+    {"zh": "传承人", "en": "heritage bearer", "preserve_zh_first": false, "note": "可按资料语境译为 practitioner"}
+  ]
+}

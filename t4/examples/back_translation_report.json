@@ -1,0 +1,21 @@
+{
+  "original_text": "剪纸的文化寓意是什么？",
+  "target_text": "Based on the supplied sources, Paper Cutting (剪纸); cultural meaning can be explained through this point: 剪纸以剪刀或刻刀在纸上制作图案；常见纹样寄托人们对团圆、吉祥和美好生活的愿望。 This is a factual, source-grounded explanation. A comparison used to help understanding is only an analogy, not a historical fact. [CIT-001] [CIT-002]",
+  "back_translation": "依据提供的资料，剪纸; 文化寓意可从以下内容理解：剪纸以剪刀或刻刀在纸上制作图案；常见纹样寄托人们对团圆、吉祥和美好生活的愿望。以上为有来源支撑的事实性说明；如使用帮助理解的类比，应明确它只是类比而非史实。[CIT-001] [CIT-002]",
+  "terminology_check": {
+    "passed": true,
+    "applicable_terms": [
+      "Paper Cutting (剪纸)",
+      "cultural meaning"
+    ],
+    "missing_terms": []
+  },
+  "citation_check": {
+    "passed": true,
+    "used_citation_ids": [
+      "CIT-001",
+      "CIT-002"
+    ]
+  },
+  "human_review_conclusion": "待人工复核：核对文化寓意是否符合具体纹样和地区语境。"
+}
