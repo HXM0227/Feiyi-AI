@@ -1,0 +1,11 @@
+{
+  "name": "非遗 AI 多语种智能导览",
+  "short_name": "非遗导览",
+  "description": "扫码进入的多语种非遗智能讲解与反馈页面",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f6f2ea",
+  "theme_color": "#8c2f39",
+  "lang": "zh-CN"
+}

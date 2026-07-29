@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#8c2f39" />
+    <meta
+      name="description"
+      content="面向非遗展馆的多语种 AI 扫码导览、问答、语音播放、引用和反馈页面。"
+    />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="stylesheet" href="/assets/css/app.css" />
+    <title>非遗 AI 智能导览</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳到主要内容</a>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="返回导览首页">
+        <span class="brand-mark" aria-hidden="true">遗</span>
+        <span>
+          <strong>非遗 AI 智能导览</strong>
+          <small>看见工艺，听懂文化</small>
+        </span>
+      </a>
+      <div class="status-pill" id="systemStatus" role="status">
+        <span class="status-dot"></span>
+        正在连接
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero" aria-labelledby="heroTitle">
+        <div>
+          <p class="eyebrow">MULTILINGUAL HERITAGE GUIDE</p>
+          <h1 id="heroTitle">从一件展品开始，理解它背后的文化</h1>
+          <p class="hero-copy">
+            扫码进入后，可使用文字、展品编号、图片或音频提问。回答将展示资料来源，
+            便于核验与延伸阅读。
+          </p>
+        </div>
+        <div class="exhibit-badge" id="exhibitBadge" hidden>
+          <span>当前展品</span>
+          <strong id="exhibitLabel"></strong>
+        </div>
+      </section>
+
+      <section class="guide-layout">
+        <form class="panel ask-panel" id="guideForm">
+          <div class="section-heading">
+            <div>
+              <p class="step-label">01 · 设置偏好</p>
+              <h2>你希望如何了解？</h2>
+            </div>
+          </div>
+
+          <div class="field-grid">
+            <label class="field">
+              <span>讲解语言</span>
+              <select id="targetLanguage" name="target_language">
+                <option value="zh-CN">中文</option>
+                <option value="en">English</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>受众</span>
+              <select id="ageBand" name="age_band">
+                <option value="adult">成人</option>
+                <option value="child">儿童</option>
+                <option value="teen">青少年</option>
+                <option value="senior">长者</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>知识程度</span>
+              <select id="knowledgeLevel" name="knowledge_level">
+                <option value="beginner">第一次了解</option>
+                <option value="general" selected>有一点了解</option>
+                <option value="advanced">深入了解</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>讲解风格</span>
+              <select id="storyStyle" name="style">
+                <option value="educational">清晰讲解</option>
+                <option value="story">故事化</option>
+                <option value="concise">简洁</option>
+                <option value="academic">专业</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="section-heading question-heading">
+            <div>
+              <p class="step-label">02 · 提出问题</p>
+              <h2>你想知道什么？</h2>
+            </div>
+          </div>
+
+          <div class="input-tabs" role="tablist" aria-label="提问方式">
+            <button class="input-tab is-active" type="button" data-type="text" role="tab">
+              文字
+            </button>
+            <button class="input-tab" type="button" data-type="exhibit_id" role="tab">
+              展品编号
+            </button>
+            <button class="input-tab" type="button" data-type="image" role="tab">
+              拍照
+            </button>
+            <button class="input-tab" type="button" data-type="audio" role="tab">
+              语音
+            </button>
+          </div>
+
+          <div class="input-pane" data-pane="text">
+            <label class="field">
+              <span class="sr-only">输入问题</span>
+              <textarea
+                id="questionText"
+                rows="5"
+                maxlength="4000"
+                placeholder="例如：这项工艺为什么要经过这么多步骤？"
+              ></textarea>
+            </label>
+            <div class="suggestion-row" aria-label="问题示例">
+              <button type="button" class="suggestion">它有什么文化寓意？</button>
+              <button type="button" class="suggestion">制作过程有哪些步骤？</button>
+              <button type="button" class="suggestion">适合怎样向海外朋友介绍？</button>
+            </div>
+          </div>
+
+          <div class="input-pane" data-pane="exhibit_id" hidden>
+            <label class="field">
+              <span>展品编号</span>
+              <input id="exhibitId" maxlength="128" placeholder="例如：EXHIBIT-001" />
+            </label>
+          </div>
+
+          <div class="input-pane upload-pane" data-pane="image" hidden>
+            <label class="upload-box">
+              <input id="imageInput" type="file" accept="image/*" capture="environment" />
+              <span class="upload-icon" aria-hidden="true">▣</span>
+              <strong>拍摄或选择展品图片</strong>
+              <small>支持 JPG、PNG、WebP，单个文件不超过 10 MB</small>
+            </label>
+            <p class="upload-name" id="imageFileName"></p>
+          </div>
+
+          <div class="input-pane upload-pane" data-pane="audio" hidden>
+            <label class="upload-box">
+              <input id="audioInput" type="file" accept="audio/*" capture />
+              <span class="upload-icon" aria-hidden="true">◉</span>
+              <strong>录制或选择语音</strong>
+              <small>支持 MP3、WAV、M4A、WebM、Ogg</small>
+            </label>
+            <p class="upload-name" id="audioFileName"></p>
+          </div>
+
+          <div class="option-row">
+            <label class="switch-label">
+              <input id="returnAudio" type="checkbox" checked />
+              <span>同时生成语音讲解</span>
+            </label>
+            <button class="primary-button" type="submit" id="submitButton">
+              <span>开始智能讲解</span>
+              <span aria-hidden="true">→</span>
+            </button>
+          </div>
+          <p class="form-message" id="formMessage" role="alert"></p>
+        </form>
+
+        <aside class="panel context-panel" aria-label="使用说明">
+          <p class="step-label">导览提示</p>
+          <h2>让回答更准确</h2>
+          <ol class="tips-list">
+            <li>
+              <span>1</span>
+              <div><strong>尽量具体</strong><small>说出展品、工艺或你看到的细节。</small></div>
+            </li>
+            <li>
+              <span>2</span>
+              <div><strong>查看来源</strong><small>每条讲解都应能回到对应资料。</small></div>
+            </li>
+            <li>
+              <span>3</span>
+              <div><strong>提交反馈</strong><small>纠错会帮助项目成员继续完善内容。</small></div>
+            </li>
+          </ol>
+          <div class="privacy-note">
+            上传的图片和音频仅用于本次演示处理。正式部署时应设置保留期限和删除策略。
+          </div>
+        </aside>
+      </section>
+
+      <section class="result-section" id="resultSection" hidden aria-live="polite">
+        <div class="result-toolbar">
+          <div>
+            <p class="step-label">03 · 智能讲解</p>
+            <h2>回答与资料来源</h2>
+          </div>
+          <span class="trace-chip" id="traceChip"></span>
+        </div>
+        <article class="answer-card">
+          <div class="answer-actions">
+            <button type="button" class="icon-button" id="playButton">▶ 播放讲解</button>
+            <button type="button" class="icon-button" id="copyButton">复制文字</button>
+          </div>
+          <p class="answer-text" id="answerText"></p>
+          <div class="warning-list" id="warningList"></div>
+        </article>
+        <div class="citation-block">
+          <h3>资料来源</h3>
+          <div class="citation-grid" id="citationList"></div>
+        </div>
+        <div class="feedback-card">
+          <div>
+            <h3>这段讲解对你有帮助吗？</h3>
+            <p>你的反馈将与本次 trace_id 一起提交，便于定位和改进。</p>
+          </div>
+          <div class="feedback-actions">
+            <button type="button" class="feedback-button" data-rating="up">有帮助</button>
+            <button type="button" class="feedback-button" data-rating="down">需改进</button>
+          </div>
+          <label class="field correction-field" hidden>
+            <span>请告诉我们哪里需要改进</span>
+            <textarea id="correctionText" rows="3" maxlength="4000"></textarea>
+            <button type="button" class="secondary-button" id="sendCorrection">
+              提交纠错
+            </button>
+          </label>
+          <p class="feedback-message" id="feedbackMessage" role="status"></p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>非遗 AI 多语种智能解说传播项目 · T7</span>
+      <a href="/admin">内容管理</a>
+    </footer>
+    <script type="module" src="/assets/js/app.js"></script>
+  </body>
+</html>

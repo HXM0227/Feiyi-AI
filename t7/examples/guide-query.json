@@ -1,0 +1,21 @@
+{
+  "session_id": "museum-visitor-001",
+  "source_language": "auto",
+  "target_language": "en",
+  "input": {
+    "type": "exhibit_id",
+    "exhibit_id": "EXHIBIT-001"
+  },
+  "audience": {
+    "region": "global",
+    "age_band": "adult",
+    "knowledge_level": "beginner",
+    "style": "story"
+  },
+  "options": {
+    "top_k": 5,
+    "return_audio": true,
+    "include_graph_context": true,
+    "debug": false
+  }
+}
