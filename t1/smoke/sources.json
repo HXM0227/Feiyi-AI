@@ -1,0 +1,22 @@
+{
+  "sources": [
+    {
+      "source_id": "SRC-DEMO-001",
+      "source_uri": "https://example.org/ich/demo/history",
+      "title": "非遗项目示例资料",
+      "media_type": "text",
+      "authorization_status": "authorized",
+      "language": "zh-CN",
+      "version": "1.0",
+      "reviewer": "项目组抽样复核",
+      "content_hash": "ee8b4d5fef2f213f91a66894b8d27bdfdf9240f17849f9f0b87d61f29e719dd3",
+      "chunk_count": 1,
+      "publish": 0,
+      "metadata_json": "{\"language\": \"zh-CN\", \"reviewer\": \"项目组抽样复核\", \"section\": \"历史与工艺\", \"version\": \"1.0\"}",
+      "created_at": "2026-07-26T14:05:24.268413Z",
+      "updated_at": "2026-07-26T14:05:24.268413Z",
+      "trace_id": "smoke-trace",
+      "request_id": "smoke-request"
+    }
+  ]
+}

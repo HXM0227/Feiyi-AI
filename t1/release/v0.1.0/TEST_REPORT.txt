@@ -1,0 +1,37 @@
+T1 MVP ????
+====================
+
+?????2026-07-26
+Python?3.14.5
+???C:\Users\sunbu\Documents\非遗AI解说\.venv\Scripts\python.exe -m unittest discover -s t1\tests -v
+????0
+
+?????
+
+?????
+C:\Users\sunbu\Documents\非遗AI解说\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_configured_bearer_token_is_required (test_api.ApiTests.test_configured_bearer_token_is_required) ... ok
+test_correlation_headers_are_generated_when_absent (test_api.ApiTests.test_correlation_headers_are_generated_when_absent) ... ok
+test_health_and_normalize_with_correlation_headers (test_api.ApiTests.test_health_and_normalize_with_correlation_headers) ... ok
+test_health_ready_and_capabilities (test_api.ApiTests.test_health_ready_and_capabilities) ... ok
+test_invalid_request_returns_stable_error_body (test_api.ApiTests.test_invalid_request_returns_stable_error_body) ... ok
+test_missing_text_is_partial_success (test_api.ApiTests.test_missing_text_is_partial_success) ... ok
+test_mixed_batch_returns_success_and_rejection (test_api.ApiTests.test_mixed_batch_returns_success_and_rejection) ... ok
+test_normalize_is_deterministic_for_same_request (test_api.ApiTests.test_normalize_is_deterministic_for_same_request) ... ok
+test_pre_extracted_media_text_is_accepted (test_api.ApiTests.test_pre_extracted_media_text_is_accepted) ... ok
+test_publish_does_not_upgrade_restricted_authorization (test_api.ApiTests.test_publish_does_not_upgrade_restricted_authorization) ... ok
+test_readyz_reports_database_failure (test_api.ApiTests.test_readyz_reports_database_failure) ... T1 readiness check failed: database unavailable
+ok
+test_sources_returns_persisted_ledger (test_api.ApiTests.test_sources_returns_persisted_ledger) ... ok
+test_unknown_fields_and_unsupported_media_are_compatible (test_api.ApiTests.test_unknown_fields_and_unsupported_media_are_compatible) ... ok
+test_upsert_keeps_one_source_row (test_core.LedgerTests.test_upsert_keeps_one_source_row) ... ok
+test_chunks_are_bounded_and_non_empty (test_core.NormalizerTests.test_chunks_are_bounded_and_non_empty) ... ok
+test_missing_text_is_rejected_without_fabrication (test_core.NormalizerTests.test_missing_text_is_rejected_without_fabrication) ... ok
+test_restricted_status_is_preserved (test_core.NormalizerTests.test_restricted_status_is_preserved) ... ok
+test_text_normalization_is_non_semantic_and_deterministic (test_core.NormalizerTests.test_text_normalization_is_non_semantic_and_deterministic) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.224s
+
+OK

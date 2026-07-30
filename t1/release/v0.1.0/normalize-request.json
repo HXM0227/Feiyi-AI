@@ -1,0 +1,19 @@
+﻿{
+  "documents": [
+    {
+      "source_id": "SRC-DEMO-001",
+      "source_uri": "https://example.org/ich/demo/history",
+      "media_type": "text",
+      "title": "非遗项目示例资料",
+      "authorization_status": "authorized",
+      "metadata": {
+        "text": "该示例非遗项目包含代表性工艺。资料用于演示 T1 的文本清洗、稳定分块和来源追踪。\n\n历史与工艺：工艺流程应以经授权的资料为依据。",
+        "language": "zh-CN",
+        "version": "1.0",
+        "reviewer": "项目组抽样复核",
+        "section": "历史与工艺"
+      }
+    }
+  ],
+  "publish": false
+}

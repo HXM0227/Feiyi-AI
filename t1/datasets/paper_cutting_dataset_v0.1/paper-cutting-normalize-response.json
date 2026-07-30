@@ -1,0 +1,142 @@
+{
+  "records": [
+    {
+      "source_id": "PAPERCUT-UNESCO-001",
+      "title": "中国剪纸：项目总述",
+      "source_uri": "https://ich.unesco.org/en/RL/chinese-paper-cut-00219",
+      "media_type": "text",
+      "authorization_status": "unknown",
+      "metadata": {
+        "language": "zh-CN",
+        "version": "2026-07-28-draft1",
+        "reviewer": "待项目组人工复核",
+        "reviewed_at": "",
+        "section": "项目总述",
+        "audience": "普通游客与学生",
+        "scenario": "非遗展陈与智能解说",
+        "difficulty": "基础"
+      },
+      "chunks": [
+        {
+          "chunk_id": "PAPERCUT-UNESCO-001-0001",
+          "text": "中国剪纸是一类以纸为主要材料、以剪刀或刻刀形成纹样的传统美术实践。它分布于中国多个地区,不同社区会依据本地生活环境、审美习惯、民间信仰和社会风俗发展出不同的题材、构图与技法。作品既可以作为窗花、门笺等生活装饰,也常出现在节庆、婚礼和祈福等民俗活动中,具有营造环境、表达祝愿和传递文化记忆的作用。剪纸所表现的内容常与日常生活、动植物、人物故事和吉祥寓意有关。相关知识与技能通过家庭成员、社区实践以及师徒传习等方式延续。联合国教科文组织于2009年将“中国剪纸”列入人类非物质文化遗产代表作名录,名录项目编号为00219。这里的剪纸不是单一地区或单一风格,而是由多地传统共同构成的文化实践。用于智能解说时,应进一步说明具体地域流派,避免把一种地方风格概括为全部中国剪纸。",
+          "sequence": 1,
+          "section": "项目总述",
+          "language": "zh-CN"
+        }
+      ]
+    },
+    {
+      "source_id": "PAPERCUT-YUXIAN-001",
+      "title": "剪纸（蔚县剪纸）：地域与技艺特点",
+      "source_uri": "https://www.ihchina.cn/project_details/13924.html",
+      "media_type": "text",
+      "authorization_status": "unknown",
+      "metadata": {
+        "language": "zh-CN",
+        "version": "2026-07-28-draft1",
+        "reviewer": "待项目组人工复核",
+        "reviewed_at": "",
+        "section": "地域与技艺特点",
+        "audience": "普通游客与学生",
+        "scenario": "非遗展陈与智能解说",
+        "difficulty": "基础"
+      },
+      "chunks": [
+        {
+          "chunk_id": "PAPERCUT-YUXIAN-001-0001",
+          "text": "蔚县剪纸流传于河北省蔚县,是中国剪纸中具有鲜明地域特色的类型。根据中国非物质文化遗产网项目资料,该项目属于传统美术类,国家级非物质文化遗产代表性项目名录编号为VII-16,公布时间为2006年。蔚县剪纸在制作上以刻制和彩色点染相结合而著称:艺人通常先设计画样、处理纸张,再以刻刀完成细部,之后根据画面需要施加色彩。与主要依靠剪刀、突出单色轮廓效果的剪纸相比,这种方法更强调刀刻线条和彩色层次的配合。常见题材与当地民俗生活和审美表达相联系,可用于窗饰等生活空间装饰。理解蔚县剪纸时,应把“剪纸”看作这一艺术门类的通称,不能据名称推断所有工序都只使用剪刀。具体历史年代、工序术语和代表性传承人信息,在正式讲解前仍应由地方项目保护单位或传承人复核。",
+          "sequence": 1,
+          "section": "地域与技艺特点",
+          "language": "zh-CN"
+        }
+      ]
+    },
+    {
+      "source_id": "PAPERCUT-YANGZHOU-001",
+      "title": "剪纸（扬州剪纸）：地域与艺术特点",
+      "source_uri": "https://www.ihchina.cn/Article/Index/detail?id=20180",
+      "media_type": "text",
+      "authorization_status": "unknown",
+      "metadata": {
+        "language": "zh-CN",
+        "version": "2026-07-28-draft1",
+        "reviewer": "待项目组人工复核",
+        "reviewed_at": "",
+        "section": "地域与艺术特点",
+        "audience": "普通游客与学生",
+        "scenario": "非遗展陈与智能解说",
+        "difficulty": "基础"
+      },
+      "chunks": [
+        {
+          "chunk_id": "PAPERCUT-YANGZHOU-001-0001",
+          "text": "扬州剪纸流传于江苏省扬州市,是当地传统美术的重要组成部分。中国非物质文化遗产网将其列入“剪纸”项目,国家级非物质文化遗产代表性项目名录编号为VII-16,公布时间为2006年。扬州剪纸重视剪制基本功和线条组织,创作者通过纸面上虚实相生的镂空关系表现花卉、鸟兽、人物以及民俗生活等题材。作品需要兼顾形象识别、纹样装饰和纸张结构的连贯性,使细部在剪开后仍能彼此连接。相关作品既具有生活装饰功能,也可作为独立艺术作品欣赏。面向游客讲解时,可以从“一张纸怎样通过保留和去除形成图像”切入,帮助观众理解剪纸的阴阳、疏密和连断关系。对于扬州剪纸的具体流派沿革、专用剪制方法、代表作品与传承谱系,本资料只作基础导览,不替代地方保护单位或传承人的权威说明。",
+          "sequence": 1,
+          "section": "地域与艺术特点",
+          "language": "zh-CN"
+        }
+      ]
+    },
+    {
+      "source_id": "PAPERCUT-YUEQING-001",
+      "title": "剪纸（乐清细纹刻纸）：工艺与用途",
+      "source_uri": "https://www.ihchina.cn/project_details/20179.html",
+      "media_type": "text",
+      "authorization_status": "unknown",
+      "metadata": {
+        "language": "zh-CN",
+        "version": "2026-07-28-draft1",
+        "reviewer": "待项目组人工复核",
+        "reviewed_at": "",
+        "section": "工艺与用途",
+        "audience": "普通游客与学生",
+        "scenario": "非遗展陈与智能解说",
+        "difficulty": "基础"
+      },
+      "chunks": [
+        {
+          "chunk_id": "PAPERCUT-YUEQING-001-0001",
+          "text": "乐清细纹刻纸流传于浙江省乐清市,以细密纹样和精细刻制见长。中国非物质文化遗产网将其列入“剪纸”项目,国家级非物质文化遗产代表性项目名录编号为VII-16,公布时间为2006年。该技艺与当地民间装饰传统关系密切,制作时更多使用刻刀在叠放或固定的纸张上完成纹样,而不只是用剪刀剪出外轮廓。作品常运用连续、重复而富有节奏感的细纹来组织画面,线条密集但需要保持结构清楚,使镂空部分与保留部分稳定连接。其名称中的“细纹”强调纹样的精微,“刻纸”则提示刀刻是关键手段。对普通观众讲解时,可把观察重点放在纹样密度、线条连续性和刀工控制上。关于传统工具规格、具体纹样名称、历史源流和当代传承情况,公开发布前应继续核对地方文化主管部门及项目保护单位资料。",
+          "sequence": 1,
+          "section": "工艺与用途",
+          "language": "zh-CN"
+        }
+      ]
+    },
+    {
+      "source_id": "PAPERCUT-DAI-001",
+      "title": "剪纸（傣族剪纸）：文化环境与表现形式",
+      "source_uri": "https://www.ihchina.cn/project_details/13933.html",
+      "media_type": "text",
+      "authorization_status": "unknown",
+      "metadata": {
+        "language": "zh-CN",
+        "version": "2026-07-28-draft1",
+        "reviewer": "待项目组人工复核",
+        "reviewed_at": "",
+        "section": "文化环境与表现形式",
+        "audience": "普通游客与学生",
+        "scenario": "非遗展陈与智能解说",
+        "difficulty": "基础"
+      },
+      "chunks": [
+        {
+          "chunk_id": "PAPERCUT-DAI-001-0001",
+          "text": "傣族剪纸主要流传于云南部分傣族聚居地区,是与当地社会生活、节庆习俗和宗教文化环境相联系的传统美术形式。中国非物质文化遗产网将其列入“剪纸”项目,国家级非物质文化遗产代表性项目名录编号为VII-16,公布时间为2006年。制作时可通过剪或刻形成轮廓与镂空纹样,作品用于装饰和仪式等具体文化场景。题材、构图和使用方式受到傣族生活环境与审美传统影响,因此不宜仅以汉族地区常见的窗花经验来理解。向游客解说时,应同时介绍作品“怎样做”和“在什么场合使用”,把视觉形式放回相应社区的文化语境。不同地区、不同用途的傣族剪纸可能存在差异,本条只提供入门概述;涉及宗教含义、仪式规则、专门图案名称和禁忌的信息,必须邀请当地项目保护单位、传承人或相关研究者复核,避免脱离语境或作过度概括。",
+          "sequence": 1,
+          "section": "文化环境与表现形式",
+          "language": "zh-CN"
+        }
+      ]
+    }
+  ],
+  "rejected": [],
+  "warnings": [
+    "source_id=PAPERCUT-UNESCO-001 has authorization_status=unknown; downstream retrieval must filter it",
+    "source_id=PAPERCUT-YUXIAN-001 has authorization_status=unknown; downstream retrieval must filter it",
+    "source_id=PAPERCUT-YANGZHOU-001 has authorization_status=unknown; downstream retrieval must filter it",
+    "source_id=PAPERCUT-YUEQING-001 has authorization_status=unknown; downstream retrieval must filter it",
+    "source_id=PAPERCUT-DAI-001 has authorization_status=unknown; downstream retrieval must filter it"
+  ]
+}
