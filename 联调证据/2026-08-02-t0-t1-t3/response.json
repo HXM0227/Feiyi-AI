@@ -1,0 +1,16 @@
+{
+  "status": 200,
+  "body": {
+    "contract_version": "1.0.0",
+    "trace_id": "ca8ba0b1-c543-48c0-8bf7-c6434d2215b0",
+    "request_id": "req-t0-t1-t3-20260803-001",
+    "job_id": "JOB-86785CF4332B",
+    "status": "completed",
+    "accepted_count": 2,
+    "warnings": []
+  },
+  "headers": {
+    "X-Trace-ID": "",
+    "X-Request-ID": ""
+  }
+}

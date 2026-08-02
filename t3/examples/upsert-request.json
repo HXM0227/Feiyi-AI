@@ -1,0 +1,46 @@
+﻿{
+  "records": [
+    {
+      "source_id": "SRC-DEMO-001",
+      "title": "非遗项目示例资料",
+      "source_uri": "https://example.org/ich/demo/history",
+      "media_type": "text",
+      "authorization_status": "authorized",
+      "metadata": {
+        "language": "zh-CN",
+        "version": "1.0",
+        "reviewer": "项目组抽样复核",
+        "section": "历史与工艺"
+      },
+      "chunks": [
+        {
+          "chunk_id": "SRC-DEMO-001-0001",
+          "text": "该示例非遗项目包含代表性工艺。资料用于演示 T3 的关键词检索和来源追踪。",
+          "sequence": 1,
+          "section": "历史与工艺",
+          "language": "zh-CN"
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-UNKNOWN-001",
+      "title": "未确认授权资料",
+      "source_uri": "https://example.org/ich/demo/restricted",
+      "media_type": "text",
+      "authorization_status": "unknown",
+      "metadata": {
+        "language": "zh-CN",
+        "version": "1.0"
+      },
+      "chunks": [
+        {
+          "chunk_id": "SRC-UNKNOWN-001-0001",
+          "text": "这条资料包含相同的代表性工艺关键词，但授权状态未知。",
+          "sequence": 1,
+          "language": "zh-CN"
+        }
+      ]
+    }
+  ],
+  "publish": false
+}

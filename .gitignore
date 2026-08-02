@@ -7,3 +7,8 @@ __pycache__/
 *.db-wal
 t1/data/test/
 .env
+
+t3/smoke/latest.json
+
+t3/smoke/*.log
+*.log

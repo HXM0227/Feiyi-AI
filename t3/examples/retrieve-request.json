@@ -1,0 +1,8 @@
+﻿{
+  "query": "代表性工艺",
+  "language": "zh-CN",
+  "top_k": 5,
+  "filters": {
+    "authorization_status": ["authorized", "public"]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "status": 200,
+  "body": {
+    "chunks": [
+      {
+        "citation_id": "CIT-PAPERCUT-T3-INTEGRATION-AUTH-001-0001",
+        "source_id": "PAPERCUT-T3-INTEGRATION-AUTH-001",
+        "title": "剪纸 T3 授权联调资料",
+        "section": "历史与工艺",
+        "uri": "https://example.org/ich/paper-cutting/t3-authorized",
+        "excerpt": "剪纸拥有悠久的历史。剪纸工艺包括折叠、刻剪和展开。",
+        "score": 1.0
+      }
+    ]
+  },
+  "headers": {
+    "X-Trace-ID": "trace-t0-t1-t3-retrieve",
+    "X-Request-ID": "request-t0-t1-t3-retrieve"
+  }
+}

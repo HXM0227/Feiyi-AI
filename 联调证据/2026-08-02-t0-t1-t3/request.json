@@ -1,0 +1,32 @@
+{
+  "request_id": "req-t0-t1-t3-20260803-001",
+  "publish": false,
+  "documents": [
+    {
+      "source_id": "PAPERCUT-T3-INTEGRATION-AUTH-001",
+      "source_uri": "https://example.org/ich/paper-cutting/t3-authorized",
+      "media_type": "text",
+      "title": "剪纸 T3 授权联调资料",
+      "authorization_status": "authorized",
+      "metadata": {
+        "text": "剪纸拥有悠久的历史。剪纸工艺包括折叠、刻剪和展开。",
+        "language": "zh-CN",
+        "version": "integration-0.1",
+        "section": "历史与工艺"
+      }
+    },
+    {
+      "source_id": "PAPERCUT-T3-INTEGRATION-UNKNOWN-001",
+      "source_uri": "https://example.org/ich/paper-cutting/t3-unknown",
+      "media_type": "text",
+      "title": "剪纸 T3 未知授权联调资料",
+      "authorization_status": "unknown",
+      "metadata": {
+        "text": "剪纸拥有悠久的历史。该资料授权状态未知。",
+        "language": "zh-CN",
+        "version": "integration-0.1",
+        "section": "授权说明"
+      }
+    }
+  ]
+}
