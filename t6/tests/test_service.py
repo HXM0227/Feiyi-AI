@@ -1,8 +1,11 @@
 from __future__ import annotations
 
 import unittest
+from unittest.mock import patch
 
 from t6_input_media.config import Settings
+from t6_input_media.media import ValidatedMedia
+from t6_input_media.media_store import StoredAudio
 from t6_input_media.schemas import NormalizeRequest, SynthesizeRequest
 from t6_input_media.service import InputMediaService, InputNormalizationError
 
@@ -63,6 +66,58 @@ class InputMediaServiceTests(unittest.TestCase):
         self.assertTrue(first.url.startswith("mock://audio/"))
         self.assertEqual(first.mime_type, "audio/mpeg")
         self.assertEqual(first.voice, "default")
+
+    def test_dashscope_image_uses_vision_result(self) -> None:
+        service = InputMediaService(
+            Settings(
+                mode="dashscope",
+                dashscope_api_key="test-key-not-real",
+                media_allowed_hosts=("media.example.org",),
+            )
+        )
+        media = ValidatedMedia(
+            "https://media.example.org/image.jpg", "image/jpeg", b"image"
+        )
+        with (
+            patch.object(service.media, "inspect_image", return_value=media),
+            patch.object(
+                service.vision,
+                "identify",
+                return_value=("请介绍图片中的剪纸", "zh-CN", 0.8),
+            ),
+        ):
+            result = service.normalize(
+                NormalizeRequest(
+                    input={
+                        "type": "image",
+                        "media_url": "https://media.example.org/image.jpg",
+                    }
+                )
+            )
+        self.assertEqual(result.query, "请介绍图片中的剪纸")
+        self.assertEqual(result.detected_language, "zh-CN")
+
+    def test_dashscope_tts_returns_stored_asset(self) -> None:
+        service = InputMediaService(
+            Settings(mode="dashscope", dashscope_api_key="test-key-not-real")
+        )
+        with (
+            patch.object(
+                service.tts,
+                "synthesize",
+                return_value=("https://provider.example/result.wav", "Cherry"),
+            ),
+            patch.object(
+                service.media_store,
+                "store_tts_audio",
+                return_value=StoredAudio(
+                    "http://127.0.0.1:8106/media/audio/generated.wav", "audio/wav"
+                ),
+            ),
+        ):
+            result = service.synthesize(SynthesizeRequest(text="测试讲解", language="zh-CN"))
+        self.assertEqual(result.url, "http://127.0.0.1:8106/media/audio/generated.wav")
+        self.assertEqual(result.mime_type, "audio/wav")
 
 
 if __name__ == "__main__":

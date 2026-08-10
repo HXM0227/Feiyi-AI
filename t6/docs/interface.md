@@ -28,7 +28,9 @@ T0 调用时的请求：
 }
 ```
 
-MVP 仅对文本作规则语言检测。音频和图片在未显式指定源语言时返回 `detected_language: "unknown"` 和 `confidence: 0.0`，并生成占位检索查询；它们不代表已完成 ASR 或图像识别。
+Mock 模式仅对文本作规则语言检测。DashScope 模式下，音频会先通过 URL、域名白名单、MIME、文件大小和时长校验，再调用 ASR；图片会通过同类 URL、MIME、大小和像素校验，再调用视觉模型并返回其结构化检索查询。图片模型只生成可检索线索，不保证识别出准确展品名称或历史事实。
+
+真实媒体 URL 必须是白名单内的 HTTPS 地址，且不允许重定向。支持音频 WAV、MP3、M4A、Ogg、WebM；支持图片 JPEG、PNG、WebP。WebM 必须是仅含 Opus/Vorbis 音频轨的真实 WebM 容器，T6 使用 `T6_FFPROBE_PATH` 指定的 `ffprobe` 校验其内容和时长。超出大小限制返回 `413`，格式、地址、时长或像素不合格返回 `422`，缺少或无法执行 WebM 校验依赖返回 `503`，模型调用失败返回 `502`。
 
 ## `POST /v1/audio/synthesize`
 
@@ -52,7 +54,9 @@ MVP 仅对文本作规则语言检测。音频和图片在未显式指定源语�
 }
 ```
 
-`mock://` 资源是确定性占位符，不能作为可播放音频或真实 TTS 验收证据。
+Mock 模式中，`mock://` 资源是确定性占位符，不能作为可播放音频或真实 TTS 验收证据。
+
+DashScope 模式中，T6 会下载并校验百炼临时 WAV，再将其保存到本地开发媒体目录，响应 URL 为 `${T6_PUBLIC_BASE_URL}/media/audio/<id>.wav`。响应字段不变，仍严格只包含 `url`、`mime_type`、`voice`。本地媒体目录会按 `T6_MEDIA_RETENTION_HOURS` 清理，不能作为生产对象存储。
 
 ## 健康检查
 

@@ -11,7 +11,9 @@ from t6_input_media.dashscope_client import (
     AsrError,
     DashScopeAsrClient,
     DashScopeTtsClient,
+    DashScopeVisionClient,
     TtsError,
+    VisionError,
 )
 
 
@@ -202,6 +204,55 @@ class DashScopeAsrClientTests(unittest.TestCase):
         ):
             with self.assertRaises(TtsError):
                 client.synthesize("A guide", "en", "Cherry")
+
+    def test_vision_returns_structured_query(self) -> None:
+        client = DashScopeVisionClient(self.client.settings)
+        response = SimpleNamespace(
+            status_code=HTTPStatus.OK,
+            output=SimpleNamespace(
+                choices=[
+                    SimpleNamespace(
+                        message=SimpleNamespace(
+                            content=[
+                                {
+                                    "text": (
+                                        '{"query":"请介绍图片中的剪纸纹样",'
+                                        '"detected_language":"zh-CN","confidence":0.84}'
+                                    )
+                                }
+                            ]
+                        )
+                    )
+                ]
+            ),
+        )
+        with patch(
+            "t6_input_media.dashscope_client."
+            "dashscope.MultiModalConversation.call",
+            return_value=response,
+        ) as call:
+            result = client.identify("https://media.example.org/paper-cutting.jpg", "auto")
+
+        self.assertEqual(result, ("请介绍图片中的剪纸纹样", "zh-CN", 0.84))
+        self.assertEqual(call.call_args.kwargs["model"], "qwen3.6-flash")
+
+    def test_vision_rejects_non_json_response(self) -> None:
+        client = DashScopeVisionClient(self.client.settings)
+        response = SimpleNamespace(
+            status_code=HTTPStatus.OK,
+            output=SimpleNamespace(
+                choices=[
+                    SimpleNamespace(message=SimpleNamespace(content=[{"text": "not-json"}]))
+                ]
+            ),
+        )
+        with patch(
+            "t6_input_media.dashscope_client."
+            "dashscope.MultiModalConversation.call",
+            return_value=response,
+        ):
+            with self.assertRaises(VisionError):
+                client.identify("https://media.example.org/paper-cutting.jpg", "auto")
 
 
 if __name__ == "__main__":

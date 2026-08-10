@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import unittest
+from pathlib import Path
+from tempfile import TemporaryDirectory
 from unittest.mock import patch
 
 from fastapi.testclient import TestClient
@@ -8,6 +10,12 @@ from fastapi.testclient import TestClient
 from t6_input_media.api import create_app
 from t6_input_media.config import Settings
 from t6_input_media.dashscope_client import AsrError, TtsError
+from t6_input_media.dashscope_client import VisionError
+from t6_input_media.media import (
+    MediaDependencyError,
+    MediaTooLargeError,
+    ValidatedMedia,
+)
 
 
 class ApiTests(unittest.TestCase):
@@ -67,6 +75,11 @@ class ApiTests(unittest.TestCase):
             )
         )
         with patch(
+            "t6_input_media.service.MediaInspector.inspect_audio",
+            return_value=ValidatedMedia(
+                "https://audio.example.org/demo.mp3", "audio/mpeg", b"audio", 1.0
+            ),
+        ), patch(
             "t6_input_media.service.DashScopeAsrClient.transcribe",
             side_effect=AsrError("provider unavailable"),
         ):
@@ -83,6 +96,93 @@ class ApiTests(unittest.TestCase):
 
         self.assertEqual(response.status_code, 502)
         self.assertEqual(response.json()["detail"], "provider unavailable")
+
+    def test_webm_probe_dependency_failure_maps_to_service_unavailable(self) -> None:
+        client = TestClient(
+            create_app(
+                Settings(mode="dashscope", dashscope_api_key="test-key-not-real")
+            )
+        )
+        with patch(
+            "t6_input_media.service.MediaInspector.inspect_audio",
+            side_effect=MediaDependencyError("ffprobe missing"),
+        ):
+            response = client.post(
+                "/v1/input/normalize",
+                json={
+                    "input": {
+                        "type": "audio",
+                        "media_url": "https://audio.example.org/sample.webm",
+                    },
+                    "source_language": "auto",
+                },
+            )
+        self.assertEqual(response.status_code, 503)
+        self.assertEqual(response.json()["detail"], "ffprobe missing")
+
+    def test_image_provider_failure_maps_to_bad_gateway(self) -> None:
+        client = TestClient(
+            create_app(
+                Settings(mode="dashscope", dashscope_api_key="test-key-not-real")
+            )
+        )
+        with patch(
+            "t6_input_media.service.MediaInspector.inspect_image",
+            return_value=ValidatedMedia(
+                "https://media.example.org/demo.jpg", "image/jpeg", b"image"
+            ),
+        ), patch(
+            "t6_input_media.service.DashScopeVisionClient.identify",
+            side_effect=VisionError("provider unavailable"),
+        ):
+            response = client.post(
+                "/v1/input/normalize",
+                json={
+                    "input": {
+                        "type": "image",
+                        "media_url": "https://media.example.org/demo.jpg",
+                    }
+                },
+            )
+        self.assertEqual(response.status_code, 502)
+
+    def test_oversized_media_maps_to_payload_too_large(self) -> None:
+        client = TestClient(
+            create_app(
+                Settings(mode="dashscope", dashscope_api_key="test-key-not-real")
+            )
+        )
+        with patch(
+            "t6_input_media.service.MediaInspector.inspect_audio",
+            side_effect=MediaTooLargeError("媒体大小超过上限"),
+        ):
+            response = client.post(
+                "/v1/input/normalize",
+                json={
+                    "input": {
+                        "type": "audio",
+                        "media_url": "https://media.example.org/demo.wav",
+                    }
+                },
+            )
+        self.assertEqual(response.status_code, 413)
+
+    def test_dashscope_app_serves_stored_audio(self) -> None:
+        with TemporaryDirectory() as temporary:
+            media_dir = Path(temporary)
+            (media_dir / "sample.wav").write_bytes(b"RIFFtest-wave")
+            client = TestClient(
+                create_app(
+                    Settings(
+                        mode="dashscope",
+                        dashscope_api_key="test-key-not-real",
+                        media_dir=media_dir,
+                    )
+                )
+            )
+            response = client.get("/media/audio/sample.wav")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.content, b"RIFFtest-wave")
 
     def test_tts_provider_failure_maps_to_bad_gateway(self) -> None:
         client = TestClient(

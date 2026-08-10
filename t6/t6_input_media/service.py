@@ -8,8 +8,17 @@ from .dashscope_client import (
     AsrError,
     DashScopeAsrClient,
     DashScopeTtsClient,
+    DashScopeVisionClient,
     TtsError,
+    VisionError,
 )
+from .media import (
+    MediaDependencyError,
+    MediaInspector,
+    MediaTooLargeError,
+    MediaValidationError,
+)
+from .media_store import LocalMediaStore, MediaStore
 from .schemas import (
     InputType,
     NormalizeRequest,
@@ -29,6 +38,10 @@ class AsrUnavailableError(InputNormalizationError):
 
 class TtsUnavailableError(InputNormalizationError):
     """真实 TTS 服务不可用。"""
+
+
+class ImageUnavailableError(InputNormalizationError):
+    """真实图片理解服务不可用。"""
 
 
 _LANGUAGE_ALIASES = {
@@ -64,6 +77,7 @@ def detect_text_language(text: str) -> tuple[str, float]:
 class InputMediaService:
     def __init__(self, settings: Settings) -> None:
         self.settings = settings
+        self.media = MediaInspector(settings)
         self.asr = (
             DashScopeAsrClient(settings)
             if settings.mode == "dashscope"
@@ -71,6 +85,16 @@ class InputMediaService:
         )
         self.tts = (
             DashScopeTtsClient(settings)
+            if settings.mode == "dashscope"
+            else None
+        )
+        self.vision = (
+            DashScopeVisionClient(settings)
+            if settings.mode == "dashscope"
+            else None
+        )
+        self.media_store: MediaStore | None = (
+            LocalMediaStore(settings, self.media)
             if settings.mode == "dashscope"
             else None
         )
@@ -91,10 +115,17 @@ class InputMediaService:
                 detected, confidence = self._non_text_language(source_language)
             else:
                 try:
+                    media = self.media.inspect_audio(str(item.media_url))
                     query = self.asr.transcribe(
-                        str(item.media_url),
+                        media.source_url,
                         source_language,
                     )
+                except MediaTooLargeError:
+                    raise
+                except MediaDependencyError:
+                    raise
+                except MediaValidationError as exc:
+                    raise InputNormalizationError(str(exc)) from exc
                 except AsrError as exc:
                     raise AsrUnavailableError(str(exc)) from exc
 
@@ -105,8 +136,22 @@ class InputMediaService:
                 )
 
         elif item.type is InputType.IMAGE:
-            query = self._media_query(item.type, source_language)
-            detected, confidence = self._non_text_language(source_language)
+            if self.vision is None:
+                query = self._media_query(item.type, source_language)
+                detected, confidence = self._non_text_language(source_language)
+            else:
+                try:
+                    media = self.media.inspect_image(str(item.media_url))
+                    query, detected, confidence = self.vision.identify(
+                        media.source_url,
+                        source_language,
+                    )
+                except MediaTooLargeError:
+                    raise
+                except MediaValidationError as exc:
+                    raise InputNormalizationError(str(exc)) from exc
+                except VisionError as exc:
+                    raise ImageUnavailableError(str(exc)) from exc
 
         elif item.type is InputType.EXHIBIT_ID:
             exhibit_id = item.exhibit_id.strip()
@@ -124,13 +169,18 @@ class InputMediaService:
             language, _ = detect_text_language(request.text)
         voice = request.voice.strip() if request.voice and request.voice.strip() else None
         if self.tts is not None:
+            if len(request.text) > 600:
+                raise InputNormalizationError("真实 TTS 单次文本不能超过 600 个字符")
             try:
                 url, selected_voice = self.tts.synthesize(request.text, language, voice)
-            except TtsError as exc:
+                if self.media_store is None:
+                    raise TtsError("本地音频存储未初始化")
+                asset = self.media_store.store_tts_audio(url)
+            except (TtsError, MediaValidationError) as exc:
                 raise TtsUnavailableError(str(exc)) from exc
             return SynthesizeResponse(
-                url=url,
-                mime_type="audio/wav",
+                url=asset.url,
+                mime_type=asset.mime_type,
                 voice=selected_voice,
             )
 

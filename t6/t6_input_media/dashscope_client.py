@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from http import HTTPStatus
 from typing import Any
 from urllib.parse import urlparse
@@ -17,6 +18,10 @@ class AsrError(RuntimeError):
 
 class TtsError(RuntimeError):
     """DashScope TTS 调用失败或未返回有效音频 URL。"""
+
+
+class VisionError(RuntimeError):
+    """DashScope 图片理解调用失败或未返回有效结构化结果。"""
 
 
 class DashScopeAsrClient:
@@ -176,3 +181,77 @@ class DashScopeTtsClient:
     @staticmethod
     def _language_type(language: str) -> str:
         return {"zh-CN": "Chinese", "en": "English"}.get(language, "Auto")
+
+
+class DashScopeVisionClient:
+    def __init__(self, settings: Settings) -> None:
+        self.settings = settings
+
+    def identify(self, media_url: str, source_language: str) -> tuple[str, str, float]:
+        dashscope.base_http_api_url = self.settings.dashscope_base_http_api_url
+        requested_language = "自动判断" if source_language == "auto" else source_language
+        response = dashscope.MultiModalConversation.call(
+            api_key=self.settings.dashscope_api_key,
+            model=self.settings.vision_model,
+            messages=[
+                {
+                    "role": "system",
+                    "content": [
+                        {
+                            "text": (
+                                "你是非遗导览的图片输入助手。只能根据图片中可见的物件、"
+                                "文字、工艺、图案或场景生成检索线索；不能把不确定的展品"
+                                "名称、年代、地域或历史事实写成确定结论。"
+                                "只返回 JSON 对象，字段必须为 query、detected_language、confidence。"
+                                "query 为不超过 200 字的检索问题；detected_language 只能是 zh-CN、en 或 unknown；"
+                                "confidence 为 0 到 1 的数字。"
+                            )
+                        }
+                    ],
+                },
+                {
+                    "role": "user",
+                    "content": [
+                        {"image": media_url},
+                        {
+                            "text": (
+                                f"请识别此图片可用于检索的非遗导览线索。用户指定语言：{requested_language}。"
+                            )
+                        },
+                    ],
+                },
+            ],
+            result_format="message",
+        )
+        if getattr(response, "status_code", None) != HTTPStatus.OK:
+            code = getattr(response, "code", "UNKNOWN")
+            message = getattr(response, "message", "DashScope 图片理解调用失败")
+            raise VisionError(f"图片理解调用失败：{code} - {message}")
+
+        raw = DashScopeAsrClient._extract_text(response)
+        parsed = self._parse_json(raw)
+        query = parsed.get("query")
+        language = parsed.get("detected_language")
+        confidence = parsed.get("confidence")
+        if not isinstance(query, str) or not query.strip() or len(query) > 4000:
+            raise VisionError("图片理解未返回有效 query")
+        if language not in {"zh-CN", "en", "unknown"}:
+            raise VisionError("图片理解返回的 detected_language 不受支持")
+        if isinstance(confidence, bool) or not isinstance(confidence, (int, float)):
+            raise VisionError("图片理解返回的 confidence 无效")
+        if not 0 <= float(confidence) <= 1:
+            raise VisionError("图片理解返回的 confidence 超出范围")
+        return query.strip(), language, float(confidence)
+
+    @staticmethod
+    def _parse_json(value: str) -> dict[str, Any]:
+        candidate = value.strip()
+        if candidate.startswith("```"):
+            candidate = candidate.split("\n", 1)[-1].rsplit("```", 1)[0].strip()
+        try:
+            parsed = json.loads(candidate)
+        except json.JSONDecodeError as exc:
+            raise VisionError("图片理解响应不是有效 JSON") from exc
+        if not isinstance(parsed, dict):
+            raise VisionError("图片理解响应必须是 JSON 对象")
+        return parsed
