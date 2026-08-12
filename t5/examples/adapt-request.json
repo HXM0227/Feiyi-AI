@@ -1,0 +1,24 @@
+{
+  "query": "请向第一次接触中国剪纸的游客介绍它",
+  "target_language": "en",
+  "audience": {
+    "region": "global",
+    "age_band": "adult",
+    "knowledge_level": "beginner",
+    "style": "educational"
+  },
+  "graph_context": {
+    "constraints": ["区分工艺事实与帮助理解的类比"]
+  },
+  "retrieval_context": [
+    {
+      "citation_id": "CIT-001",
+      "source_id": "SRC-PAPER-CUTTING-001",
+      "title": "剪纸工艺资料",
+      "section": "材料与技法",
+      "uri": "https://example.org/ich/paper-cutting",
+      "excerpt": "剪纸以纸张为主要材料，通过剪、刻等方式形成纹样。",
+      "score": 0.96
+    }
+  ]
+}
