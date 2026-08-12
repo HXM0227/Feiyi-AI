@@ -1,0 +1,37 @@
+[
+  {
+    "id": "en-adult-general-educational-global",
+    "target_language": "en",
+    "audience": {"region": "global", "age_band": "adult", "knowledge_level": "general", "style": "educational"},
+    "expected_contains": ["清晰自然的英语", "面向成人", "简要解释必要术语", "按背景、工艺、文化意义", "面向全球受众"],
+    "expected_blocked_terms": ["uncivilized people", "backward people", "primitive people", "mysterious East"]
+  },
+  {
+    "id": "en-child-beginner-story-specified",
+    "target_language": "en-US",
+    "audience": {"region": "Japan", "age_band": "child", "knowledge_level": "beginner", "style": "story"},
+    "expected_contains": ["清晰自然的英语", "面向儿童", "一句话定义", "不得虚构人物", "不据此推断民族性格"],
+    "expected_blocked_terms": ["uncivilized people", "backward people", "primitive people", "mysterious East"]
+  },
+  {
+    "id": "zh-teen-advanced-concise-global",
+    "target_language": "zh",
+    "audience": {"region": "global", "age_band": "teen", "knowledge_level": "advanced", "style": "concise"},
+    "expected_contains": ["清晰自然的简体中文", "面向青少年", "保留准确术语", "三个以内的关键点", "面向全球受众"],
+    "expected_blocked_terms": ["未开化民族", "落后民族", "原始民族", "神秘东方"]
+  },
+  {
+    "id": "zh-senior-expert-academic-specified",
+    "target_language": "zh-CN",
+    "audience": {"region": "France", "age_band": "senior", "knowledge_level": "expert", "style": "academic"},
+    "expected_contains": ["面向年长受众", "使用精确术语", "避免绝对化结论", "不据此推断民族性格"],
+    "expected_blocked_terms": ["未开化民族", "落后民族", "原始民族", "神秘东方"]
+  },
+  {
+    "id": "en-unspecified-general-educational-global",
+    "target_language": "en-GB",
+    "audience": {"region": "GLOBAL", "age_band": "unspecified", "knowledge_level": "general", "style": "educational"},
+    "expected_contains": ["未指定年龄", "简要解释必要术语", "按背景、工艺、文化意义", "面向全球受众"],
+    "expected_blocked_terms": ["uncivilized people", "backward people", "primitive people", "mysterious East"]
+  }
+]

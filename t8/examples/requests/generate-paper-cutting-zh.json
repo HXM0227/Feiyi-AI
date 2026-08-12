@@ -1,0 +1,27 @@
+{
+  "topic": "中国剪纸",
+  "target_language": "zh-CN",
+  "platform": "poster",
+  "audience": {
+    "region": "global",
+    "age_band": "adult",
+    "knowledge_level": "beginner",
+    "style": "concise"
+  },
+  "max_length": 200,
+  "context": [
+    {
+      "citation_id": "CIT-001",
+      "source_id": "SRC-PAPER-CUTTING-001",
+      "title": "中国剪纸概览",
+      "section": "制作方式",
+      "uri": "https://example.org/paper-cutting",
+      "excerpt": "剪纸以纸张为材料，通过剪刀剪制或刻刀雕刻形成装饰纹样。",
+      "score": 0.95
+    }
+  ],
+  "requirements": {
+    "human_review": true,
+    "preserve_citations": true
+  }
+}

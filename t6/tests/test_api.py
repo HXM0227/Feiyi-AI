@@ -1,0 +1,207 @@
+from __future__ import annotations
+
+import unittest
+from pathlib import Path
+from tempfile import TemporaryDirectory
+from unittest.mock import patch
+
+from fastapi.testclient import TestClient
+
+from t6_input_media.api import create_app
+from t6_input_media.config import Settings
+from t6_input_media.dashscope_client import AsrError, TtsError
+from t6_input_media.dashscope_client import VisionError
+from t6_input_media.media import (
+    MediaDependencyError,
+    MediaTooLargeError,
+    ValidatedMedia,
+)
+
+
+class ApiTests(unittest.TestCase):
+    def setUp(self) -> None:
+        self.client = TestClient(create_app(Settings()))
+
+    def test_health_and_ready(self) -> None:
+        for path in ("/healthz", "/readyz"):
+            response = self.client.get(path)
+            self.assertEqual(response.status_code, 200)
+            self.assertEqual(response.json()["mode"], "mock")
+
+    def test_normalize_matches_t0_payload_shape(self) -> None:
+        response = self.client.post(
+            "/v1/input/normalize",
+            headers={"X-Trace-ID": "trace-1", "X-Request-ID": "request-1"},
+            json={
+                "input": {"type": "text", "text": "What is paper cutting?"},
+                "source_language": "auto",
+            },
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()["query"], "What is paper cutting?")
+        self.assertEqual(response.json()["detected_language"], "en")
+
+    def test_synthesis_response_has_only_t0_audio_asset_fields(self) -> None:
+        response = self.client.post(
+            "/v1/audio/synthesize",
+            json={"text": "A source-grounded guide.", "language": "en", "voice": "narrator"},
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(set(response.json()), {"url", "mime_type", "voice"})
+        self.assertEqual(response.json()["voice"], "narrator")
+
+    def test_extra_contract_fields_are_rejected(self) -> None:
+        response = self.client.post(
+            "/v1/input/normalize",
+            json={
+                "input": {"type": "text", "text": "剪纸", "unexpected": True},
+                "source_language": "auto",
+            },
+        )
+        self.assertEqual(response.status_code, 422)
+        self.assertEqual(response.json()["code"], "VALIDATION_ERROR")
+
+    def test_unsupported_language_is_unprocessable(self) -> None:
+        response = self.client.post(
+            "/v1/audio/synthesize",
+            json={"text": "Bonjour", "language": "fr"},
+        )
+        self.assertEqual(response.status_code, 422)
+
+    def test_asr_provider_failure_maps_to_bad_gateway(self) -> None:
+        client = TestClient(
+            create_app(
+                Settings(mode="dashscope", dashscope_api_key="test-key-not-real")
+            )
+        )
+        with patch(
+            "t6_input_media.service.MediaInspector.inspect_audio",
+            return_value=ValidatedMedia(
+                "https://audio.example.org/demo.mp3", "audio/mpeg", b"audio", 1.0
+            ),
+        ), patch(
+            "t6_input_media.service.DashScopeAsrClient.transcribe",
+            side_effect=AsrError("provider unavailable"),
+        ):
+            response = client.post(
+                "/v1/input/normalize",
+                json={
+                    "input": {
+                        "type": "audio",
+                        "media_url": "https://audio.example.org/demo.mp3",
+                    },
+                    "source_language": "auto",
+                },
+            )
+
+        self.assertEqual(response.status_code, 502)
+        self.assertEqual(response.json()["detail"], "provider unavailable")
+
+    def test_webm_probe_dependency_failure_maps_to_service_unavailable(self) -> None:
+        client = TestClient(
+            create_app(
+                Settings(mode="dashscope", dashscope_api_key="test-key-not-real")
+            )
+        )
+        with patch(
+            "t6_input_media.service.MediaInspector.inspect_audio",
+            side_effect=MediaDependencyError("ffprobe missing"),
+        ):
+            response = client.post(
+                "/v1/input/normalize",
+                json={
+                    "input": {
+                        "type": "audio",
+                        "media_url": "https://audio.example.org/sample.webm",
+                    },
+                    "source_language": "auto",
+                },
+            )
+        self.assertEqual(response.status_code, 503)
+        self.assertEqual(response.json()["detail"], "ffprobe missing")
+
+    def test_image_provider_failure_maps_to_bad_gateway(self) -> None:
+        client = TestClient(
+            create_app(
+                Settings(mode="dashscope", dashscope_api_key="test-key-not-real")
+            )
+        )
+        with patch(
+            "t6_input_media.service.MediaInspector.inspect_image",
+            return_value=ValidatedMedia(
+                "https://media.example.org/demo.jpg", "image/jpeg", b"image"
+            ),
+        ), patch(
+            "t6_input_media.service.DashScopeVisionClient.identify",
+            side_effect=VisionError("provider unavailable"),
+        ):
+            response = client.post(
+                "/v1/input/normalize",
+                json={
+                    "input": {
+                        "type": "image",
+                        "media_url": "https://media.example.org/demo.jpg",
+                    }
+                },
+            )
+        self.assertEqual(response.status_code, 502)
+
+    def test_oversized_media_maps_to_payload_too_large(self) -> None:
+        client = TestClient(
+            create_app(
+                Settings(mode="dashscope", dashscope_api_key="test-key-not-real")
+            )
+        )
+        with patch(
+            "t6_input_media.service.MediaInspector.inspect_audio",
+            side_effect=MediaTooLargeError("媒体大小超过上限"),
+        ):
+            response = client.post(
+                "/v1/input/normalize",
+                json={
+                    "input": {
+                        "type": "audio",
+                        "media_url": "https://media.example.org/demo.wav",
+                    }
+                },
+            )
+        self.assertEqual(response.status_code, 413)
+
+    def test_dashscope_app_serves_stored_audio(self) -> None:
+        with TemporaryDirectory() as temporary:
+            media_dir = Path(temporary)
+            (media_dir / "sample.wav").write_bytes(b"RIFFtest-wave")
+            client = TestClient(
+                create_app(
+                    Settings(
+                        mode="dashscope",
+                        dashscope_api_key="test-key-not-real",
+                        media_dir=media_dir,
+                    )
+                )
+            )
+            response = client.get("/media/audio/sample.wav")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.content, b"RIFFtest-wave")
+
+    def test_tts_provider_failure_maps_to_bad_gateway(self) -> None:
+        client = TestClient(
+            create_app(
+                Settings(mode="dashscope", dashscope_api_key="test-key-not-real")
+            )
+        )
+        with patch(
+            "t6_input_media.service.DashScopeTtsClient.synthesize",
+            side_effect=TtsError("provider unavailable"),
+        ):
+            response = client.post(
+                "/v1/audio/synthesize",
+                json={"text": "A guide", "language": "en"},
+            )
+
+        self.assertEqual(response.status_code, 502)
+        self.assertEqual(response.json()["detail"], "provider unavailable")
+
+
+if __name__ == "__main__":
+    unittest.main()

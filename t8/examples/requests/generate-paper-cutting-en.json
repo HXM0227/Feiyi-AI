@@ -1,0 +1,27 @@
+{
+  "topic": "Chinese Paper Cutting",
+  "target_language": "en",
+  "platform": "social",
+  "audience": {
+    "region": "global",
+    "age_band": "adult",
+    "knowledge_level": "general",
+    "style": "educational"
+  },
+  "max_length": 500,
+  "context": [
+    {
+      "citation_id": "CIT-001",
+      "source_id": "SRC-PAPER-CUTTING-001",
+      "title": "Chinese Paper Cutting Overview",
+      "section": "Craft process",
+      "uri": "https://example.org/paper-cutting",
+      "excerpt": "Paper cutting creates decorative patterns by cutting or carving paper with hand tools.",
+      "score": 0.95
+    }
+  ],
+  "requirements": {
+    "human_review": true,
+    "preserve_citations": true
+  }
+}

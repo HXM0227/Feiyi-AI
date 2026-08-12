@@ -1,0 +1,21 @@
+{
+  "version": "t8-platform-templates-1.0.0",
+  "platforms": {
+    "short_video": {
+      "zh-CN": {"body": "镜头从这里开始：{topic}。{audience_hint}——{excerpt} {citation}。发布前请由项目成员复核事实、译名与素材授权。"},
+      "en": {"body": "Start the story here: {topic}. {audience_hint}: {excerpt} {citation}. Verify facts, names, and media rights before publishing."}
+    },
+    "poster": {
+      "zh-CN": {"body": "{topic}\n{audience_hint}：{excerpt} {citation}\n发布前须人工复核。"},
+      "en": {"body": "{topic}\n{audience_hint}: {excerpt} {citation}\nHuman review is required before publication."}
+    },
+    "social": {
+      "zh-CN": {"body": "一起认识{topic}。{audience_hint}：{excerpt} {citation}。欢迎在核对来源后分享这段文化故事。"},
+      "en": {"body": "Discover {topic}. {audience_hint}: {excerpt} {citation}. Share this cultural story only after checking the source."}
+    },
+    "event_intro": {
+      "zh-CN": {"body": "欢迎来到{topic}主题活动。{audience_hint}：{excerpt} {citation}。以下内容为活动介绍草稿，须经人工审核后使用。"},
+      "en": {"body": "Welcome to our event on {topic}. {audience_hint}: {excerpt} {citation}. This introduction is a draft and requires human review."}
+    }
+  }
+}

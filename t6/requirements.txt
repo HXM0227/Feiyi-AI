@@ -1,0 +1,8 @@
+fastapi>=0.116,<1
+pydantic>=2.10,<3
+uvicorn[standard]>=0.35,<1
+python-dotenv>=1.0,<2
+httpx>=0.28,<1
+dashscope>=1.24.6,<2
+mutagen>=1.47,<2
+Pillow>=10.4,<12
