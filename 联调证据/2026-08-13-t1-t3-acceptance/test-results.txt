@@ -1,0 +1,13 @@
+t1_normalize_ok: PASS
+t0_ingest_completed: PASS
+t1_output_consumed_by_t3: PASS
+duplicate_upsert_idempotent: PASS
+authorized_retrievable: PASS
+unknown_filtered: PASS
+restricted_filtered: PASS
+no_match_empty: PASS
+citation_complete: PASS
+t1_invalid_rejected: PASS
+t0_guide_consumes_citations: PASS
+trace_headers_echoed: PASS
+t0_blocks_ungrounded: PASS

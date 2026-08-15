@@ -1,0 +1,13 @@
+{
+  "method": "POST",
+  "path": "/v1/retrieve",
+  "headers": {
+    "X-Trace-ID": "trace-t3-retrieve-001",
+    "X-Request-ID": "request-t3-retrieve-001"
+  },
+  "body": {
+    "query": "剪纸工艺历史",
+    "language": "zh-CN",
+    "top_k": 5
+  }
+}

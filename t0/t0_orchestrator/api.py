@@ -35,6 +35,17 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.state.orchestrator = orchestrator
     app.state.settings = settings
 
+    @app.middleware("http")
+    async def request_context(request: Request, call_next):
+        trace_id = request.headers.get("X-Trace-ID") or str(uuid.uuid4())
+        request_id = request.headers.get("X-Request-ID") or str(uuid.uuid4())
+        request.state.trace_id = trace_id
+        request.state.request_id = request_id
+        response = await call_next(request)
+        response.headers["X-Trace-ID"] = trace_id
+        response.headers["X-Request-ID"] = request_id
+        return response
+
     async def authorize(
         x_api_key: Annotated[str | None, Header(alias="X-API-Key")] = None,
     ) -> None:
@@ -48,7 +59,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
 
     @app.exception_handler(T0Error)
     async def handle_t0_error(request: Request, exc: T0Error) -> JSONResponse:
-        trace_id = request.headers.get("X-Trace-ID", str(uuid.uuid4()))
+        trace_id = getattr(request.state, "trace_id", request.headers.get("X-Trace-ID", str(uuid.uuid4())))
         body = ErrorBody(
             code=exc.code,
             message=exc.message,
@@ -62,7 +73,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     async def handle_validation_error(
         request: Request, exc: RequestValidationError
     ) -> JSONResponse:
-        trace_id = request.headers.get("X-Trace-ID", str(uuid.uuid4()))
+        trace_id = getattr(request.state, "trace_id", request.headers.get("X-Trace-ID", str(uuid.uuid4())))
         errors = [
             {
                 "field": ".".join(str(part) for part in item["loc"]),

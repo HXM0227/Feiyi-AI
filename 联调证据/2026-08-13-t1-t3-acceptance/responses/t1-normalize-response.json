@@ -1,0 +1,34 @@
+{
+  "status": 200,
+  "body": {
+    "records": [
+      {
+        "source_id": "ACCEPTANCE-AUTH-001",
+        "title": "剪纸授权验收资料",
+        "source_uri": "https://example.org/acceptance/auth",
+        "media_type": "text",
+        "authorization_status": "authorized",
+        "metadata": {
+          "language": "zh-CN",
+          "version": "acceptance-1",
+          "section": "历史与工艺"
+        },
+        "chunks": [
+          {
+            "chunk_id": "ACCEPTANCE-AUTH-001-0001",
+            "text": "剪纸拥有悠久历史。剪纸工艺包括折叠、刻剪和展开。",
+            "sequence": 1,
+            "section": "历史与工艺",
+            "language": "zh-CN"
+          }
+        ]
+      }
+    ],
+    "rejected": [],
+    "warnings": []
+  },
+  "headers": {
+    "X-Trace-ID": "trace-t1-001",
+    "X-Request-ID": "request-t1-001"
+  }
+}

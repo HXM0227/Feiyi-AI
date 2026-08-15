@@ -1,0 +1,47 @@
+﻿{
+  "records": [
+    {
+      "source_id": "PAPERCUT-T2-DEMO-001",
+      "title": "中国剪纸人工标注知识图谱样例",
+      "source_uri": "https://example.org/feiyi/papercut-t2-demo",
+      "media_type": "text",
+      "authorization_status": "authorized",
+      "metadata": {"language": "zh-CN", "version": "0.1"},
+      "chunks": [
+        {
+          "chunk_id": "PAPERCUT-T2-DEMO-001-0001",
+          "text": "中国剪纸是一种传统民间工艺，蔚县剪纸是其中的地域性实践。",
+          "sequence": 1,
+          "section": "基本概念",
+          "language": "zh-CN"
+        }
+      ],
+      "entities": [
+        {
+          "entity_id": "ENTITY-PAPERCUT",
+          "entity_type": "craft",
+          "canonical_name": "剪纸",
+          "aliases": ["中国剪纸", "paper cutting"],
+          "language": "zh-CN"
+        },
+        {
+          "entity_id": "ENTITY-YUXIAN-PAPERCUT",
+          "entity_type": "craft",
+          "canonical_name": "蔚县剪纸",
+          "aliases": ["蔚县窗花"],
+          "language": "zh-CN"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-PAPERCUT-YUXIAN-001",
+          "subject_id": "ENTITY-YUXIAN-PAPERCUT",
+          "predicate": "example_of",
+          "object_id": "ENTITY-PAPERCUT",
+          "chunk_id": "PAPERCUT-T2-DEMO-001-0001"
+        }
+      ]
+    }
+  ],
+  "publish": false
+}

@@ -1,0 +1,31 @@
+{
+  "status": 200,
+  "body": {
+    "contract_version": "1.0.0",
+    "trace_id": "6559a989-2791-434d-afbd-9785a6973244",
+    "request_id": "acceptance-guide-001",
+    "session_id": "acceptance-session-001",
+    "answer": "stub answer [CIT-001]",
+    "detected_language": "zh-CN",
+    "target_language": "zh-CN",
+    "citations": [
+      {
+        "citation_id": "CIT-ACCEPTANCE-AUTH-001-0001",
+        "source_id": "ACCEPTANCE-AUTH-001",
+        "title": "剪纸授权验收资料",
+        "section": "历史与工艺",
+        "uri": "https://example.org/acceptance/auth",
+        "excerpt": "剪纸拥有悠久历史。剪纸工艺包括折叠、刻剪和展开。",
+        "score": 0.4
+      }
+    ],
+    "audio": null,
+    "warnings": [],
+    "pipeline": [],
+    "created_at": "2026-08-13T15:05:27.993905Z"
+  },
+  "headers": {
+    "X-Trace-ID": "trace-guide-001",
+    "X-Request-ID": "request-guide-001"
+  }
+}

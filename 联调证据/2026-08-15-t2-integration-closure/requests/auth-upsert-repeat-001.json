@@ -1,0 +1,217 @@
+{
+  "records": [
+    {
+      "source_id": "SRC-T2-AUTH-AUTHORIZED-20260815",
+      "source_uri": "https://example.org/feiyi/t2-closure/src-t2-auth-authorized-20260815",
+      "media_type": "document",
+      "title": "T2 集成收口 SRC-T2-AUTH-AUTHORIZED-20260815",
+      "authorization_status": "authorized",
+      "metadata": {
+        "text": "授权可见实体20260815 是非遗人工标注验收资料，用于验证 T2 与 T3 的来源和分块回链。",
+        "language": "zh-CN",
+        "section": "integration-closure",
+        "version": "2026-08-15"
+      },
+      "entities": [
+        {
+          "entity_id": "E-T2-AUTH-AUTHORIZED-20260815-CRAFT",
+          "entity_type": "craft",
+          "canonical_name": "授权可见实体20260815",
+          "aliases": [
+            "授权可见实体20260815别名",
+            "E-T2-AUTH-AUTHORIZED-20260815-alias"
+          ],
+          "language": "zh-CN"
+        },
+        {
+          "entity_id": "E-T2-AUTH-AUTHORIZED-20260815-TOOL",
+          "entity_type": "tool",
+          "canonical_name": "授权可见实体20260815工具",
+          "aliases": [
+            "E-T2-AUTH-AUTHORIZED-20260815-tool-alias"
+          ],
+          "language": "zh-CN"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "E-T2-AUTH-AUTHORIZED-20260815-USES",
+          "subject_id": "E-T2-AUTH-AUTHORIZED-20260815-CRAFT",
+          "predicate": "uses",
+          "object_id": "E-T2-AUTH-AUTHORIZED-20260815-TOOL",
+          "source_id": "SRC-T2-AUTH-AUTHORIZED-20260815",
+          "chunk_id": "SRC-T2-AUTH-AUTHORIZED-20260815-0001",
+          "authorization_status": "authorized"
+        }
+      ],
+      "chunks": [
+        {
+          "chunk_id": "SRC-T2-AUTH-AUTHORIZED-20260815-0001",
+          "text": "授权可见实体20260815 是非遗人工标注验收资料，用于验证 T2 与 T3 的来源和分块回链。",
+          "sequence": 1,
+          "language": "zh-CN"
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-T2-AUTH-PUBLIC-20260815",
+      "source_uri": "https://example.org/feiyi/t2-closure/src-t2-auth-public-20260815",
+      "media_type": "document",
+      "title": "T2 集成收口 SRC-T2-AUTH-PUBLIC-20260815",
+      "authorization_status": "public",
+      "metadata": {
+        "text": "公开可见实体20260815 是非遗人工标注验收资料，用于验证 T2 与 T3 的来源和分块回链。",
+        "language": "zh-CN",
+        "section": "integration-closure",
+        "version": "2026-08-15"
+      },
+      "entities": [
+        {
+          "entity_id": "E-T2-AUTH-PUBLIC-20260815-CRAFT",
+          "entity_type": "craft",
+          "canonical_name": "公开可见实体20260815",
+          "aliases": [
+            "公开可见实体20260815别名",
+            "E-T2-AUTH-PUBLIC-20260815-alias"
+          ],
+          "language": "zh-CN"
+        },
+        {
+          "entity_id": "E-T2-AUTH-PUBLIC-20260815-TOOL",
+          "entity_type": "tool",
+          "canonical_name": "公开可见实体20260815工具",
+          "aliases": [
+            "E-T2-AUTH-PUBLIC-20260815-tool-alias"
+          ],
+          "language": "zh-CN"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "E-T2-AUTH-PUBLIC-20260815-USES",
+          "subject_id": "E-T2-AUTH-PUBLIC-20260815-CRAFT",
+          "predicate": "uses",
+          "object_id": "E-T2-AUTH-PUBLIC-20260815-TOOL",
+          "source_id": "SRC-T2-AUTH-PUBLIC-20260815",
+          "chunk_id": "SRC-T2-AUTH-PUBLIC-20260815-0001",
+          "authorization_status": "public"
+        }
+      ],
+      "chunks": [
+        {
+          "chunk_id": "SRC-T2-AUTH-PUBLIC-20260815-0001",
+          "text": "公开可见实体20260815 是非遗人工标注验收资料，用于验证 T2 与 T3 的来源和分块回链。",
+          "sequence": 1,
+          "language": "zh-CN"
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-T2-AUTH-UNKNOWN-20260815",
+      "source_uri": "https://example.org/feiyi/t2-closure/src-t2-auth-unknown-20260815",
+      "media_type": "document",
+      "title": "T2 集成收口 SRC-T2-AUTH-UNKNOWN-20260815",
+      "authorization_status": "unknown",
+      "metadata": {
+        "text": "未知授权实体20260815 是非遗人工标注验收资料，用于验证 T2 与 T3 的来源和分块回链。",
+        "language": "zh-CN",
+        "section": "integration-closure",
+        "version": "2026-08-15"
+      },
+      "entities": [
+        {
+          "entity_id": "E-T2-AUTH-UNKNOWN-20260815-CRAFT",
+          "entity_type": "craft",
+          "canonical_name": "未知授权实体20260815",
+          "aliases": [
+            "未知授权实体20260815别名",
+            "E-T2-AUTH-UNKNOWN-20260815-alias"
+          ],
+          "language": "zh-CN"
+        },
+        {
+          "entity_id": "E-T2-AUTH-UNKNOWN-20260815-TOOL",
+          "entity_type": "tool",
+          "canonical_name": "未知授权实体20260815工具",
+          "aliases": [
+            "E-T2-AUTH-UNKNOWN-20260815-tool-alias"
+          ],
+          "language": "zh-CN"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "E-T2-AUTH-UNKNOWN-20260815-USES",
+          "subject_id": "E-T2-AUTH-UNKNOWN-20260815-CRAFT",
+          "predicate": "uses",
+          "object_id": "E-T2-AUTH-UNKNOWN-20260815-TOOL",
+          "source_id": "SRC-T2-AUTH-UNKNOWN-20260815",
+          "chunk_id": "SRC-T2-AUTH-UNKNOWN-20260815-0001",
+          "authorization_status": "unknown"
+        }
+      ],
+      "chunks": [
+        {
+          "chunk_id": "SRC-T2-AUTH-UNKNOWN-20260815-0001",
+          "text": "未知授权实体20260815 是非遗人工标注验收资料，用于验证 T2 与 T3 的来源和分块回链。",
+          "sequence": 1,
+          "language": "zh-CN"
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-T2-AUTH-RESTRICTED-20260815",
+      "source_uri": "https://example.org/feiyi/t2-closure/src-t2-auth-restricted-20260815",
+      "media_type": "document",
+      "title": "T2 集成收口 SRC-T2-AUTH-RESTRICTED-20260815",
+      "authorization_status": "restricted",
+      "metadata": {
+        "text": "受限授权实体20260815 是非遗人工标注验收资料，用于验证 T2 与 T3 的来源和分块回链。",
+        "language": "zh-CN",
+        "section": "integration-closure",
+        "version": "2026-08-15"
+      },
+      "entities": [
+        {
+          "entity_id": "E-T2-AUTH-RESTRICTED-20260815-CRAFT",
+          "entity_type": "craft",
+          "canonical_name": "受限授权实体20260815",
+          "aliases": [
+            "受限授权实体20260815别名",
+            "E-T2-AUTH-RESTRICTED-20260815-alias"
+          ],
+          "language": "zh-CN"
+        },
+        {
+          "entity_id": "E-T2-AUTH-RESTRICTED-20260815-TOOL",
+          "entity_type": "tool",
+          "canonical_name": "受限授权实体20260815工具",
+          "aliases": [
+            "E-T2-AUTH-RESTRICTED-20260815-tool-alias"
+          ],
+          "language": "zh-CN"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "E-T2-AUTH-RESTRICTED-20260815-USES",
+          "subject_id": "E-T2-AUTH-RESTRICTED-20260815-CRAFT",
+          "predicate": "uses",
+          "object_id": "E-T2-AUTH-RESTRICTED-20260815-TOOL",
+          "source_id": "SRC-T2-AUTH-RESTRICTED-20260815",
+          "chunk_id": "SRC-T2-AUTH-RESTRICTED-20260815-0001",
+          "authorization_status": "restricted"
+        }
+      ],
+      "chunks": [
+        {
+          "chunk_id": "SRC-T2-AUTH-RESTRICTED-20260815-0001",
+          "text": "受限授权实体20260815 是非遗人工标注验收资料，用于验证 T2 与 T3 的来源和分块回链。",
+          "sequence": 1,
+          "language": "zh-CN"
+        }
+      ]
+    }
+  ],
+  "publish": true
+}

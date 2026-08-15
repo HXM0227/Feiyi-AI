@@ -1,0 +1,51 @@
+{
+  "request_id": "REQ-T2-CLOSURE-CHAIN-20260815",
+  "publish": true,
+  "documents": [
+    {
+      "source_id": "SRC-T2-CLOSURE-CHAIN-20260815",
+      "source_uri": "https://example.org/feiyi/t2-closure/src-t2-closure-chain-20260815",
+      "media_type": "document",
+      "title": "T2 集成收口 SRC-T2-CLOSURE-CHAIN-20260815",
+      "authorization_status": "authorized",
+      "metadata": {
+        "text": "闭环剪纸工艺20260815 是非遗人工标注验收资料，用于验证 T2 与 T3 的来源和分块回链。",
+        "language": "zh-CN",
+        "section": "integration-closure",
+        "version": "2026-08-15"
+      },
+      "entities": [
+        {
+          "entity_id": "E-T2-CLOSURE-CHAIN-20260815-CRAFT",
+          "entity_type": "craft",
+          "canonical_name": "闭环剪纸工艺20260815",
+          "aliases": [
+            "闭环剪纸工艺20260815别名",
+            "E-T2-CLOSURE-CHAIN-20260815-alias"
+          ],
+          "language": "zh-CN"
+        },
+        {
+          "entity_id": "E-T2-CLOSURE-CHAIN-20260815-TOOL",
+          "entity_type": "tool",
+          "canonical_name": "闭环剪纸工艺20260815工具",
+          "aliases": [
+            "E-T2-CLOSURE-CHAIN-20260815-tool-alias"
+          ],
+          "language": "zh-CN"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "E-T2-CLOSURE-CHAIN-20260815-USES",
+          "subject_id": "E-T2-CLOSURE-CHAIN-20260815-CRAFT",
+          "predicate": "uses",
+          "object_id": "E-T2-CLOSURE-CHAIN-20260815-TOOL",
+          "source_id": "SRC-T2-CLOSURE-CHAIN-20260815",
+          "chunk_id": "SRC-T2-CLOSURE-CHAIN-20260815-0001",
+          "authorization_status": "authorized"
+        }
+      ]
+    }
+  ]
+}

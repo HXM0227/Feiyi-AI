@@ -1,0 +1,164 @@
+{
+  "status": 200,
+  "headers": {
+    "content-type": "application/json",
+    "x-trace-id": "b0f8b703-458c-41a7-8e93-1b2775a514a1",
+    "x-request-id": "b423cfc5-a687-4388-993e-1ef1ebf3ed99"
+  },
+  "body": {
+    "contract_version": "1.0.0",
+    "module": "T2",
+    "entities": [
+      {
+        "entity_id": "E-T2-AUTH-AUTHORIZED-20260815-CRAFT",
+        "entity_type": "craft",
+        "canonical_name": "授权可见实体20260815",
+        "aliases": [
+          "E-T2-AUTH-AUTHORIZED-20260815-alias",
+          "授权可见实体20260815别名"
+        ],
+        "language": "zh-CN",
+        "metadata": {},
+        "sources": [
+          {
+            "source_id": "SRC-T2-AUTH-AUTHORIZED-20260815",
+            "chunk_id": "SRC-T2-AUTH-AUTHORIZED-20260815-0001",
+            "title": "T2 集成收口 SRC-T2-AUTH-AUTHORIZED-20260815",
+            "source_uri": "https://example.org/feiyi/t2-closure/src-t2-auth-authorized-20260815",
+            "authorization_status": "authorized"
+          }
+        ]
+      },
+      {
+        "entity_id": "E-T2-AUTH-AUTHORIZED-20260815-TOOL",
+        "entity_type": "tool",
+        "canonical_name": "授权可见实体20260815工具",
+        "aliases": [
+          "E-T2-AUTH-AUTHORIZED-20260815-tool-alias"
+        ],
+        "language": "zh-CN",
+        "metadata": {},
+        "sources": [
+          {
+            "source_id": "SRC-T2-AUTH-AUTHORIZED-20260815",
+            "chunk_id": "SRC-T2-AUTH-AUTHORIZED-20260815-0001",
+            "title": "T2 集成收口 SRC-T2-AUTH-AUTHORIZED-20260815",
+            "source_uri": "https://example.org/feiyi/t2-closure/src-t2-auth-authorized-20260815",
+            "authorization_status": "authorized"
+          }
+        ]
+      },
+      {
+        "entity_id": "E-T2-AUTH-PUBLIC-20260815-CRAFT",
+        "entity_type": "craft",
+        "canonical_name": "公开可见实体20260815",
+        "aliases": [
+          "E-T2-AUTH-PUBLIC-20260815-alias",
+          "公开可见实体20260815别名"
+        ],
+        "language": "zh-CN",
+        "metadata": {},
+        "sources": [
+          {
+            "source_id": "SRC-T2-AUTH-PUBLIC-20260815",
+            "chunk_id": "SRC-T2-AUTH-PUBLIC-20260815-0001",
+            "title": "T2 集成收口 SRC-T2-AUTH-PUBLIC-20260815",
+            "source_uri": "https://example.org/feiyi/t2-closure/src-t2-auth-public-20260815",
+            "authorization_status": "public"
+          }
+        ]
+      },
+      {
+        "entity_id": "E-T2-AUTH-PUBLIC-20260815-TOOL",
+        "entity_type": "tool",
+        "canonical_name": "公开可见实体20260815工具",
+        "aliases": [
+          "E-T2-AUTH-PUBLIC-20260815-tool-alias"
+        ],
+        "language": "zh-CN",
+        "metadata": {},
+        "sources": [
+          {
+            "source_id": "SRC-T2-AUTH-PUBLIC-20260815",
+            "chunk_id": "SRC-T2-AUTH-PUBLIC-20260815-0001",
+            "title": "T2 集成收口 SRC-T2-AUTH-PUBLIC-20260815",
+            "source_uri": "https://example.org/feiyi/t2-closure/src-t2-auth-public-20260815",
+            "authorization_status": "public"
+          }
+        ]
+      },
+      {
+        "entity_id": "E-T2-CLOSURE-CHAIN-20260815-CRAFT",
+        "entity_type": "craft",
+        "canonical_name": "闭环剪纸工艺20260815",
+        "aliases": [
+          "E-T2-CLOSURE-CHAIN-20260815-alias",
+          "闭环剪纸工艺20260815别名"
+        ],
+        "language": "zh-CN",
+        "metadata": {},
+        "sources": [
+          {
+            "source_id": "SRC-T2-CLOSURE-CHAIN-20260815",
+            "chunk_id": "SRC-T2-CLOSURE-CHAIN-20260815-0001",
+            "title": "T2 集成收口 SRC-T2-CLOSURE-CHAIN-20260815",
+            "source_uri": "https://example.org/feiyi/t2-closure/src-t2-closure-chain-20260815",
+            "authorization_status": "authorized"
+          }
+        ]
+      },
+      {
+        "entity_id": "E-T2-CLOSURE-CHAIN-20260815-TOOL",
+        "entity_type": "tool",
+        "canonical_name": "闭环剪纸工艺20260815工具",
+        "aliases": [
+          "E-T2-CLOSURE-CHAIN-20260815-tool-alias"
+        ],
+        "language": "zh-CN",
+        "metadata": {},
+        "sources": [
+          {
+            "source_id": "SRC-T2-CLOSURE-CHAIN-20260815",
+            "chunk_id": "SRC-T2-CLOSURE-CHAIN-20260815-0001",
+            "title": "T2 集成收口 SRC-T2-CLOSURE-CHAIN-20260815",
+            "source_uri": "https://example.org/feiyi/t2-closure/src-t2-closure-chain-20260815",
+            "authorization_status": "authorized"
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "relation_id": "E-T2-AUTH-AUTHORIZED-20260815-USES",
+        "subject_id": "E-T2-AUTH-AUTHORIZED-20260815-CRAFT",
+        "predicate": "uses",
+        "object_id": "E-T2-AUTH-AUTHORIZED-20260815-TOOL",
+        "source_id": "SRC-T2-AUTH-AUTHORIZED-20260815",
+        "chunk_id": "SRC-T2-AUTH-AUTHORIZED-20260815-0001",
+        "authorization_status": "authorized",
+        "metadata": {}
+      },
+      {
+        "relation_id": "E-T2-AUTH-PUBLIC-20260815-USES",
+        "subject_id": "E-T2-AUTH-PUBLIC-20260815-CRAFT",
+        "predicate": "uses",
+        "object_id": "E-T2-AUTH-PUBLIC-20260815-TOOL",
+        "source_id": "SRC-T2-AUTH-PUBLIC-20260815",
+        "chunk_id": "SRC-T2-AUTH-PUBLIC-20260815-0001",
+        "authorization_status": "public",
+        "metadata": {}
+      },
+      {
+        "relation_id": "E-T2-CLOSURE-CHAIN-20260815-USES",
+        "subject_id": "E-T2-CLOSURE-CHAIN-20260815-CRAFT",
+        "predicate": "uses",
+        "object_id": "E-T2-CLOSURE-CHAIN-20260815-TOOL",
+        "source_id": "SRC-T2-CLOSURE-CHAIN-20260815",
+        "chunk_id": "SRC-T2-CLOSURE-CHAIN-20260815-0001",
+        "authorization_status": "authorized",
+        "metadata": {}
+      }
+    ]
+  },
+  "error": ""
+}

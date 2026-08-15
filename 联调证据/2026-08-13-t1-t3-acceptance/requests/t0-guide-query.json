@@ -1,0 +1,27 @@
+{
+  "method": "POST",
+  "path": "/v1/guide/query",
+  "headers": {
+    "X-Trace-ID": "trace-guide-001",
+    "X-Request-ID": "request-guide-001"
+  },
+  "body": {
+    "request_id": "acceptance-guide-001",
+    "session_id": "acceptance-session-001",
+    "source_language": "zh-CN",
+    "target_language": "zh-CN",
+    "input": {
+      "type": "text",
+      "text": "剪纸工艺的历史是什么？"
+    },
+    "audience": {
+      "region": "global",
+      "knowledge_level": "general",
+      "style": "educational"
+    },
+    "options": {
+      "top_k": 5,
+      "include_graph_context": false
+    }
+  }
+}

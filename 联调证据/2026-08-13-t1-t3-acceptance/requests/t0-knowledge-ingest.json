@@ -1,0 +1,53 @@
+{
+  "method": "POST",
+  "path": "/v1/knowledge/ingest",
+  "headers": {
+    "X-Trace-ID": "trace-t0-ingest-001",
+    "X-Request-ID": "request-t0-ingest-001"
+  },
+  "body": {
+    "request_id": "acceptance-ingest-001",
+    "publish": false,
+    "documents": [
+      {
+        "source_id": "ACCEPTANCE-AUTH-001",
+        "source_uri": "https://example.org/acceptance/auth",
+        "media_type": "text",
+        "title": "剪纸授权验收资料",
+        "authorization_status": "authorized",
+        "metadata": {
+          "text": "剪纸拥有悠久历史。剪纸工艺包括折叠、刻剪和展开。",
+          "language": "zh-CN",
+          "version": "acceptance-1",
+          "section": "历史与工艺"
+        }
+      },
+      {
+        "source_id": "ACCEPTANCE-UNKNOWN-001",
+        "source_uri": "https://example.org/acceptance/unknown",
+        "media_type": "text",
+        "title": "剪纸未知授权资料",
+        "authorization_status": "unknown",
+        "metadata": {
+          "text": "剪纸未知授权资料，不得默认公开。",
+          "language": "zh-CN",
+          "version": "acceptance-1",
+          "section": "授权"
+        }
+      },
+      {
+        "source_id": "ACCEPTANCE-RESTRICTED-001",
+        "source_uri": "https://example.org/acceptance/restricted",
+        "media_type": "text",
+        "title": "剪纸受限授权资料",
+        "authorization_status": "restricted",
+        "metadata": {
+          "text": "剪纸受限授权资料，不得默认公开。",
+          "language": "zh-CN",
+          "version": "acceptance-1",
+          "section": "授权"
+        }
+      }
+    ]
+  }
+}

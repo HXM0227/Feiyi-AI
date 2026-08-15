@@ -1,0 +1,11 @@
+{
+  "query": "T2失败降级资料20260815 ",
+  "language": "zh-CN",
+  "top_k": 10,
+  "filters": {
+    "authorization_status": [
+      "authorized",
+      "public"
+    ]
+  }
+}

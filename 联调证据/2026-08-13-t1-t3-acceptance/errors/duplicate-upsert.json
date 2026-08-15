@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "contract_version": "1.0.0",
+    "status": "completed",
+    "accepted_count": 1,
+    "indexed_count": 1,
+    "warnings": []
+  },
+  "headers": {
+    "X-Trace-ID": "trace-t3-idempotent-001",
+    "X-Request-ID": "request-t3-idempotent-001"
+  }
+}

@@ -1,0 +1,246 @@
+{
+  "assertions": {
+    "t1_normalize_ok": true,
+    "t0_ingest_completed": true,
+    "t1_output_consumed_by_t3": true,
+    "duplicate_upsert_idempotent": true,
+    "authorized_retrievable": true,
+    "unknown_filtered": true,
+    "restricted_filtered": true,
+    "no_match_empty": true,
+    "citation_complete": true,
+    "t1_invalid_rejected": true,
+    "t0_guide_consumes_citations": true,
+    "trace_headers_echoed": true,
+    "t0_blocks_ungrounded": true
+  },
+  "results": {
+    "t1-normalize": {
+      "status": 200,
+      "body": {
+        "records": [
+          {
+            "source_id": "ACCEPTANCE-AUTH-001",
+            "title": "剪纸授权验收资料",
+            "source_uri": "https://example.org/acceptance/auth",
+            "media_type": "text",
+            "authorization_status": "authorized",
+            "metadata": {
+              "language": "zh-CN",
+              "version": "acceptance-1",
+              "section": "历史与工艺"
+            },
+            "chunks": [
+              {
+                "chunk_id": "ACCEPTANCE-AUTH-001-0001",
+                "text": "剪纸拥有悠久历史。剪纸工艺包括折叠、刻剪和展开。",
+                "sequence": 1,
+                "section": "历史与工艺",
+                "language": "zh-CN"
+              }
+            ]
+          }
+        ],
+        "rejected": [],
+        "warnings": []
+      },
+      "headers": {
+        "X-Trace-ID": "trace-t1-001",
+        "X-Request-ID": "request-t1-001"
+      }
+    },
+    "t0-knowledge-ingest": {
+      "status": 200,
+      "body": {
+        "contract_version": "1.0.0",
+        "trace_id": "c3e39829-397d-49b0-9b2b-f31b43be8b28",
+        "request_id": "acceptance-ingest-001",
+        "job_id": "JOB-2C71FFA9E086",
+        "status": "completed",
+        "accepted_count": 3,
+        "warnings": []
+      },
+      "headers": {
+        "X-Trace-ID": "trace-t0-ingest-001",
+        "X-Request-ID": "request-t0-ingest-001"
+      }
+    },
+    "t3-upsert": {
+      "status": 200,
+      "body": {
+        "contract_version": "1.0.0",
+        "status": "completed",
+        "accepted_count": 0,
+        "indexed_count": 0,
+        "warnings": []
+      },
+      "headers": {
+        "X-Trace-ID": "trace-t3-upsert-001",
+        "X-Request-ID": "request-t3-upsert-001"
+      }
+    },
+    "t3-retrieve": {
+      "status": 200,
+      "body": {
+        "chunks": [
+          {
+            "citation_id": "CIT-ACCEPTANCE-AUTH-001-0001",
+            "source_id": "ACCEPTANCE-AUTH-001",
+            "title": "剪纸授权验收资料",
+            "section": "历史与工艺",
+            "uri": "https://example.org/acceptance/auth",
+            "excerpt": "剪纸拥有悠久历史。剪纸工艺包括折叠、刻剪和展开。",
+            "score": 0.666667
+          }
+        ]
+      },
+      "headers": {
+        "X-Trace-ID": "trace-t3-retrieve-001",
+        "X-Request-ID": "request-t3-retrieve-001"
+      }
+    },
+    "t3-upsert-from-t1": {
+      "status": 200,
+      "body": {
+        "contract_version": "1.0.0",
+        "status": "completed",
+        "accepted_count": 1,
+        "indexed_count": 1,
+        "warnings": []
+      },
+      "headers": {
+        "X-Trace-ID": "trace-t1-t3-upsert-001",
+        "X-Request-ID": "request-t1-t3-upsert-001"
+      }
+    },
+    "t3-duplicate-upsert": {
+      "status": 200,
+      "body": {
+        "contract_version": "1.0.0",
+        "status": "completed",
+        "accepted_count": 1,
+        "indexed_count": 1,
+        "warnings": []
+      },
+      "headers": {
+        "X-Trace-ID": "trace-t3-idempotent-001",
+        "X-Request-ID": "request-t3-idempotent-001"
+      }
+    },
+    "unknown-authorization": {
+      "status": 200,
+      "body": {
+        "chunks": []
+      },
+      "headers": {
+        "X-Trace-ID": "trace-unknown-001",
+        "X-Request-ID": "request-unknown-001"
+      }
+    },
+    "restricted-authorization": {
+      "status": 200,
+      "body": {
+        "chunks": []
+      },
+      "headers": {
+        "X-Trace-ID": "trace-restricted-001",
+        "X-Request-ID": "request-restricted-001"
+      }
+    },
+    "no-match": {
+      "status": 200,
+      "body": {
+        "chunks": []
+      },
+      "headers": {
+        "X-Trace-ID": "trace-no-match-001",
+        "X-Request-ID": "request-no-match-001"
+      }
+    },
+    "invalid-t1": {
+      "status": 422,
+      "body": {
+        "code": "VALIDATION_ERROR",
+        "message": "请求字段校验失败",
+        "trace_id": "trace-invalid-t1",
+        "retryable": false,
+        "details": {
+          "errors": [
+            {
+              "loc": [
+                "body",
+                "documents",
+                0,
+                "source_id"
+              ],
+              "type": "string_too_short",
+              "message": "String should have at least 1 character"
+            },
+            {
+              "loc": [
+                "body",
+                "documents",
+                0,
+                "title"
+              ],
+              "type": "string_too_short",
+              "message": "String should have at least 1 character"
+            }
+          ]
+        }
+      },
+      "headers": {
+        "X-Trace-ID": "trace-invalid-t1",
+        "X-Request-ID": "request-invalid-t1"
+      }
+    },
+    "t0-guide-query": {
+      "status": 200,
+      "body": {
+        "contract_version": "1.0.0",
+        "trace_id": "6559a989-2791-434d-afbd-9785a6973244",
+        "request_id": "acceptance-guide-001",
+        "session_id": "acceptance-session-001",
+        "answer": "stub answer [CIT-001]",
+        "detected_language": "zh-CN",
+        "target_language": "zh-CN",
+        "citations": [
+          {
+            "citation_id": "CIT-ACCEPTANCE-AUTH-001-0001",
+            "source_id": "ACCEPTANCE-AUTH-001",
+            "title": "剪纸授权验收资料",
+            "section": "历史与工艺",
+            "uri": "https://example.org/acceptance/auth",
+            "excerpt": "剪纸拥有悠久历史。剪纸工艺包括折叠、刻剪和展开。",
+            "score": 0.4
+          }
+        ],
+        "audio": null,
+        "warnings": [],
+        "pipeline": [],
+        "created_at": "2026-08-13T15:05:27.993905Z"
+      },
+      "headers": {
+        "X-Trace-ID": "trace-guide-001",
+        "X-Request-ID": "request-guide-001"
+      }
+    },
+    "downstream-unavailable": {
+      "status": 502,
+      "body": {
+        "code": "DOWNSTREAM_MODULE_ERROR",
+        "message": "T3 调用失败：<urlopen error timed out>",
+        "trace_id": "trace-downstream-001",
+        "retryable": true,
+        "details": {
+          "module_id": "T3",
+          "path": "/v1/retrieve"
+        }
+      },
+      "headers": {
+        "X-Trace-ID": "trace-downstream-001",
+        "X-Request-ID": "request-downstream-001"
+      }
+    }
+  }
+}

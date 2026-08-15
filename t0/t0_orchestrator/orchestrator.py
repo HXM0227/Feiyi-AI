@@ -363,7 +363,14 @@ class Orchestrator:
             "T1",
             "/v1/documents/normalize",
             {
-                "documents": [item.model_dump(mode="json") for item in request.documents],
+                "documents": [
+                    {
+                        **item.model_dump(mode="json"),
+                        "entities": [entity.model_dump(mode="json") for entity in item.entities],
+                        "relations": [relation.model_dump(mode="json") for relation in item.relations],
+                    }
+                    for item in request.documents
+                ],
                 "publish": request.publish,
             },
             trace_id=trace_id,
@@ -395,11 +402,12 @@ class Orchestrator:
                 action="index_documents",
             )
         )
+        graph_records = self._build_graph_records(records, request.documents)
         graph_task = asyncio.create_task(
             self._timed_call(
                 "T2",
                 "/v1/graph/upsert",
-                {"records": records, "publish": request.publish},
+                {"records": graph_records, "publish": request.publish},
                 trace_id=trace_id,
                 request_id=request_id,
                 action="upsert_graph",
@@ -424,6 +432,18 @@ class Orchestrator:
             accepted_count=len(records),
             warnings=warnings,
         )
+
+    @staticmethod
+    def _build_graph_records(records: list[dict[str, Any]], documents: list[Any]) -> list[dict[str, Any]]:
+        annotations = {document.source_id: document for document in documents}
+        graph_records: list[dict[str, Any]] = []
+        for record in records:
+            document = annotations.get(record.get("source_id"))
+            payload = dict(record)
+            payload["entities"] = [entity.model_dump(mode="json") for entity in (document.entities if document else [])]
+            payload["relations"] = [relation.model_dump(mode="json") for relation in (document.relations if document else [])]
+            graph_records.append(payload)
+        return graph_records
 
     async def submit_feedback(self, request: FeedbackRequest) -> AckResponse:
         request_id = request.request_id or str(uuid.uuid4())

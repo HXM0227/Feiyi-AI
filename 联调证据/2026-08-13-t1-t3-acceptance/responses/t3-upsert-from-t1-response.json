@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "contract_version": "1.0.0",
+    "status": "completed",
+    "accepted_count": 1,
+    "indexed_count": 1,
+    "warnings": []
+  },
+  "headers": {
+    "X-Trace-ID": "trace-t1-t3-upsert-001",
+    "X-Request-ID": "request-t1-t3-upsert-001"
+  }
+}

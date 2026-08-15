@@ -1,0 +1,31 @@
+{
+  "status": 200,
+  "headers": {
+    "content-type": "application/json",
+    "x-trace-id": "8b4cba40-4d4a-465b-b152-0e351a72bfa9",
+    "x-request-id": "ce3c3154-cafe-474b-94f8-7a9be778e052"
+  },
+  "body": {
+    "chunks": [
+      {
+        "citation_id": "CIT-SRC-T2-PARTIAL-20260815-0001",
+        "source_id": "SRC-T2-PARTIAL-20260815",
+        "title": "T2 集成收口 SRC-T2-PARTIAL-20260815",
+        "section": "integration-closure",
+        "uri": "https://example.org/feiyi/t2-closure/src-t2-partial-20260815",
+        "excerpt": "T2失败降级资料20260815 是非遗人工标注验收资料,用于验证 T2 与 T3 的来源和分块回链。",
+        "score": 1.0
+      },
+      {
+        "citation_id": "CIT-SRC-T2-CLOSURE-CHAIN-20260815-0001",
+        "source_id": "SRC-T2-CLOSURE-CHAIN-20260815",
+        "title": "T2 集成收口 SRC-T2-CLOSURE-CHAIN-20260815",
+        "section": "integration-closure",
+        "uri": "https://example.org/feiyi/t2-closure/src-t2-closure-chain-20260815",
+        "excerpt": "闭环剪纸工艺20260815 是非遗人工标注验收资料,用于验证 T2 与 T3 的来源和分块回链。",
+        "score": 0.166667
+      }
+    ]
+  },
+  "error": ""
+}

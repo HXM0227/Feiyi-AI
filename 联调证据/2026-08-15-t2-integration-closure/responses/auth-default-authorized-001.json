@@ -1,0 +1,47 @@
+{
+  "status": 200,
+  "headers": {
+    "content-type": "application/json",
+    "x-trace-id": "34b646be-b039-4787-b67c-0edb25536a24",
+    "x-request-id": "0f4d1a73-138e-4609-8aea-46be7afdc576"
+  },
+  "body": {
+    "contract_version": "1.0.0",
+    "module": "T2",
+    "entities": [
+      {
+        "entity_id": "E-T2-AUTH-AUTHORIZED-20260815-CRAFT",
+        "entity_type": "craft",
+        "canonical_name": "授权可见实体20260815",
+        "aliases": [
+          "E-T2-AUTH-AUTHORIZED-20260815-alias",
+          "授权可见实体20260815别名"
+        ],
+        "language": "zh-CN",
+        "metadata": {},
+        "sources": [
+          {
+            "source_id": "SRC-T2-AUTH-AUTHORIZED-20260815",
+            "chunk_id": "SRC-T2-AUTH-AUTHORIZED-20260815-0001",
+            "title": "T2 集成收口 SRC-T2-AUTH-AUTHORIZED-20260815",
+            "source_uri": "https://example.org/feiyi/t2-closure/src-t2-auth-authorized-20260815",
+            "authorization_status": "authorized"
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "relation_id": "E-T2-AUTH-AUTHORIZED-20260815-USES",
+        "subject_id": "E-T2-AUTH-AUTHORIZED-20260815-CRAFT",
+        "predicate": "uses",
+        "object_id": "E-T2-AUTH-AUTHORIZED-20260815-TOOL",
+        "source_id": "SRC-T2-AUTH-AUTHORIZED-20260815",
+        "chunk_id": "SRC-T2-AUTH-AUTHORIZED-20260815-0001",
+        "authorization_status": "authorized",
+        "metadata": {}
+      }
+    ]
+  },
+  "error": ""
+}

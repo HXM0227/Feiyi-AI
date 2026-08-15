@@ -1,0 +1,21 @@
+{
+  "status": 200,
+  "headers": {
+    "content-type": "application/json",
+    "x-trace-id": "c8553327-f771-4843-b55c-ce1143743ad0",
+    "x-request-id": "9b3ff173-4bb3-432d-80d8-ad084d9783e4"
+  },
+  "body": {
+    "contract_version": "1.0.0",
+    "module": "T2",
+    "status": "completed",
+    "accepted_count": 4,
+    "entity_count": 8,
+    "relation_count": 4,
+    "warnings": [
+      "source_id=SRC-T2-AUTH-RESTRICTED-20260815 has authorization_status=restricted; graph queries filter it by default",
+      "source_id=SRC-T2-AUTH-UNKNOWN-20260815 has authorization_status=unknown; graph queries filter it by default"
+    ]
+  },
+  "error": ""
+}

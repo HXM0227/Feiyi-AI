@@ -1,0 +1,10 @@
+{
+  "status": 200,
+  "body": {
+    "chunks": []
+  },
+  "headers": {
+    "X-Trace-ID": "trace-unknown-001",
+    "X-Request-ID": "request-unknown-001"
+  }
+}

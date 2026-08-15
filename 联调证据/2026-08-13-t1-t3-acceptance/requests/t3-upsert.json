@@ -1,0 +1,11 @@
+{
+  "method": "POST",
+  "path": "/v1/index/upsert",
+  "headers": {
+    "X-Trace-ID": "trace-t3-upsert-001",
+    "X-Request-ID": "request-t3-upsert-001"
+  },
+  "body": {
+    "records": []
+  }
+}

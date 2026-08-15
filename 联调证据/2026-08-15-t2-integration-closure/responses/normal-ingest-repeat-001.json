@@ -1,0 +1,18 @@
+{
+  "status": 200,
+  "headers": {
+    "content-type": "application/json",
+    "x-trace-id": "TRACE-T2-CLOSURE-CHAIN-002",
+    "x-request-id": "REQ-T2-CLOSURE-CHAIN-20260815"
+  },
+  "body": {
+    "contract_version": "1.0.0",
+    "trace_id": "2ab2608a-003b-44d4-8ea1-5ccfbbc65dba",
+    "request_id": "REQ-T2-CLOSURE-CHAIN-20260815",
+    "job_id": "JOB-A164BE81B1BF",
+    "status": "completed",
+    "accepted_count": 1,
+    "warnings": []
+  },
+  "error": ""
+}

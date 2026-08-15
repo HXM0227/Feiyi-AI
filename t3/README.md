@@ -63,6 +63,12 @@ Invoke-RestMethod -Method Post -Uri http://127.0.0.1:8103/v1/retrieve `
 
 测试不访问外网、不调用模型。真实 HTTP 冒烟脚本位于 `t3/smoke/run_smoke.py`。
 
+## 2026-08-13 验收版状态
+
+- T3 自动化测试：9/9 通过；T0/T1：12/12、18/18。
+- 真实 HTTP：T1 输出直接发送 T3 upsert 成功；T3 citation 可被 T0 消费。
+- 授权过滤、无命中空结果、重复 upsert 幂等、错误响应和追踪 ID 已验证。
+- 结论：T3 MVP 有条件通过，不等于 Embedding/向量/Rerank 或生产召回质量验收。详见 `t3/ACCEPTANCE_REPORT.md` 和 `联调证据/2026-08-13-t1-t3-acceptance/`。
 ## 与 T0/T1 的调用链
 
 ```text

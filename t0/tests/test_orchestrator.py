@@ -144,6 +144,14 @@ class OrchestratorTests(unittest.IsolatedAsyncioTestCase):
                             "media_type": "document",
                             "title": "示例资料",
                             "authorization_status": "authorized",
+                            "entities": [
+                                {
+                                    "entity_id": "E-T0-1",
+                                    "entity_type": "craft",
+                                    "canonical_name": "示例技艺",
+                                    "aliases": ["demo craft"],
+                                }
+                            ],
                         }
                     ]
                 }

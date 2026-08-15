@@ -1,0 +1,8 @@
+{
+  "name": "受限授权实体20260815",
+  "filters": {
+    "authorization_status": [
+      "restricted"
+    ]
+  }
+}

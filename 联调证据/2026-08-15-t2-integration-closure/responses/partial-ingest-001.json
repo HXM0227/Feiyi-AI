@@ -1,0 +1,20 @@
+{
+  "status": 200,
+  "headers": {
+    "content-type": "application/json",
+    "x-trace-id": "TRACE-T2-PARTIAL-001",
+    "x-request-id": "REQ-T2-PARTIAL-20260815"
+  },
+  "body": {
+    "contract_version": "1.0.0",
+    "trace_id": "0ff1a5af-f0b0-4084-bc89-2730615d7d1a",
+    "request_id": "REQ-T2-PARTIAL-20260815",
+    "job_id": "JOB-7B09943EEED7",
+    "status": "partial",
+    "accepted_count": 1,
+    "warnings": [
+      "T2 图谱写入失败；T3 索引已完成，可稍后重放图谱任务。"
+    ]
+  },
+  "error": ""
+}

@@ -1,0 +1,34 @@
+{
+  "T1": {
+    "db": "C:\\Users\\sunbu\\Documents\\非遗AI解说\\Feiyi-AI-fork\\联调证据\\2026-08-15-t2-integration-closure\\t1-closure.db",
+    "tables": {
+      "source_ledger": 2
+    }
+  },
+  "T2": {
+    "db": "C:\\Users\\sunbu\\Documents\\非遗AI解说\\Feiyi-AI-fork\\联调证据\\2026-08-15-t2-integration-closure\\t2-closure.db",
+    "tables": {
+      "chunks": 5,
+      "entities": 10,
+      "entity_aliases": 15,
+      "entity_sources": 10,
+      "relations": 5,
+      "sources": 5
+    },
+    "chain": {
+      "source_rows": 1,
+      "chunk_rows": 1,
+      "entity_rows": 2,
+      "relation_rows": 1
+    }
+  },
+  "T3": {
+    "db": "C:\\Users\\sunbu\\Documents\\非遗AI解说\\Feiyi-AI-fork\\联调证据\\2026-08-15-t2-integration-closure\\t3-closure.db",
+    "tables": {
+      "chunks": 2
+    },
+    "chain": {
+      "chunk_rows": 1
+    }
+  }
+}

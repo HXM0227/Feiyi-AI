@@ -1,0 +1,17 @@
+{
+  "status": 502,
+  "body": {
+    "code": "DOWNSTREAM_MODULE_ERROR",
+    "message": "T3 调用失败：<urlopen error timed out>",
+    "trace_id": "trace-downstream-001",
+    "retryable": true,
+    "details": {
+      "module_id": "T3",
+      "path": "/v1/retrieve"
+    }
+  },
+  "headers": {
+    "X-Trace-ID": "trace-downstream-001",
+    "X-Request-ID": "request-downstream-001"
+  }
+}

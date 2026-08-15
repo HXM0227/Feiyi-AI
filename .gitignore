@@ -12,3 +12,10 @@ t3/smoke/latest.json
 
 t3/smoke/*.log
 *.log
+
+# Local archives, process metadata, and environment secrets
+/t3.zip
+**/logs/isolated-processes.json
+.env.*
+!.env.example
+/联调证据/2026-08-15-t2-integration-closure/test-results-automated.txt

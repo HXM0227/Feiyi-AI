@@ -1,0 +1,12 @@
+{
+  "status": 200,
+  "headers": {
+    "content-type": "application/json",
+    "x-trace-id": "708fd0ce-2c07-4972-8eab-ec6333e45551",
+    "x-request-id": "3d8d4de4-8745-4f68-b351-87b6d4bbefed"
+  },
+  "body": {
+    "status": "ok"
+  },
+  "error": ""
+}

@@ -1,0 +1,15 @@
+{
+  "status": 200,
+  "headers": {
+    "content-type": "application/json",
+    "x-trace-id": "33ecac13-0cd3-4a27-9895-b59b7283c728",
+    "x-request-id": "9fde926d-01e0-4bae-9676-a432913e4f4e"
+  },
+  "body": {
+    "contract_version": "1.0.0",
+    "module": "T2",
+    "entity": null,
+    "relations": []
+  },
+  "error": ""
+}

@@ -79,6 +79,12 @@ python -m unittest discover -s t1\tests -v
 
 测试不访问外网、不调用模型。运行完整测试前必须先安装 `t1\requirements-dev.txt` 中的依赖；如果缺少 FastAPI、Pydantic 或 HTTPX，测试会失败或 API 测试被跳过。`/readyz` 会实际执行 SQLite `SELECT 1` 探测，数据库不可用时返回 HTTP 503。
 
+## 2026-08-13 验收版状态
+
+- T1 自动化测试：18/18 通过；T0/T1/T3：12/12、18/18、9/9。
+- 真实 HTTP：T0 → T1 normalize → T3 upsert 的链路已在 `联调证据/2026-08-13-t1-t3-acceptance/` 复现。
+- 异常规则：非法输入统一返回 `VALIDATION_ERROR`；`unknown`/`restricted` 原样保留；`publish=true` 不升级授权状态。
+- 结论：T1 MVP 有条件通过，不等于真实模型质量、专业资料复核或公开发布授权已完成。详见 `t1/ACCEPTANCE_REPORT.md`。
 ## 与 T0 的契约问题与后续事项
 
 1. 分工表写有“source_id 由 T1 创建”，但 T0 v1.0.0 的 `KnowledgeDocument` 将 `source_id` 设为必填。当前 MVP 以 T0 实际请求为准，保留传入 ID；如要由 T1 生成，需先提交契约变更提案。

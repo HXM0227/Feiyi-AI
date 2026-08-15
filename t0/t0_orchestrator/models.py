@@ -120,6 +120,29 @@ class ContentGenerateResponse(ContractModel):
     warnings: list[str] = Field(default_factory=list)
 
 
+class KnowledgeEntity(ContractModel):
+    entity_id: str = Field(min_length=1, max_length=256)
+    entity_type: Literal["craft", "person", "place", "tool", "symbol", "process", "concept"]
+    canonical_name: str = Field(min_length=1, max_length=300)
+    aliases: list[str] = Field(default_factory=list, max_length=100)
+    language: str | None = Field(default=None, max_length=32)
+    metadata: dict[str, Any] = Field(default_factory=dict)
+
+
+class KnowledgeRelation(ContractModel):
+    relation_id: str = Field(min_length=1, max_length=256)
+    subject_id: str = Field(min_length=1, max_length=256)
+    predicate: Literal[
+        "belongs_to", "related_to", "uses", "practiced_in", "includes",
+        "has_symbol", "has_process", "has_tool", "adapted_for", "example_of",
+    ]
+    object_id: str = Field(min_length=1, max_length=256)
+    source_id: str | None = Field(default=None, max_length=128)
+    chunk_id: str | None = Field(default=None, max_length=256)
+    authorization_status: Literal["authorized", "public", "restricted", "unknown"] | None = None
+    metadata: dict[str, Any] = Field(default_factory=dict)
+
+
 class KnowledgeDocument(ContractModel):
     source_id: str = Field(min_length=1, max_length=128)
     source_uri: str
@@ -127,6 +150,8 @@ class KnowledgeDocument(ContractModel):
     title: str = Field(min_length=1, max_length=300)
     authorization_status: Literal["authorized", "public", "restricted", "unknown"]
     metadata: dict[str, Any] = Field(default_factory=dict)
+    entities: list[KnowledgeEntity] = Field(default_factory=list, max_length=1000)
+    relations: list[KnowledgeRelation] = Field(default_factory=list, max_length=2000)
 
 
 class KnowledgeIngestRequest(ContractModel):

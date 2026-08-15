@@ -1,0 +1,46 @@
+{
+  "status": 200,
+  "headers": {
+    "content-type": "application/json",
+    "x-trace-id": "19652fe5-0040-4c41-b0eb-0414fbeef68a",
+    "x-request-id": "d0345d7d-5b03-4c15-9f47-e54014f438e4"
+  },
+  "body": {
+    "module": "T2",
+    "contract_version": "1.0.0",
+    "storage": "sqlite",
+    "mode": "mvp",
+    "entity_types": [
+      "craft",
+      "person",
+      "place",
+      "tool",
+      "symbol",
+      "process",
+      "concept"
+    ],
+    "predicates": [
+      "belongs_to",
+      "related_to",
+      "uses",
+      "practiced_in",
+      "includes",
+      "has_symbol",
+      "has_process",
+      "has_tool",
+      "adapted_for",
+      "example_of"
+    ],
+    "authorization_default": [
+      "authorized",
+      "public"
+    ],
+    "routes": [
+      "/v1/graph/upsert",
+      "/v1/graph/query",
+      "/v1/graph/entities/{entity_id}",
+      "/v1/graph/relations"
+    ]
+  },
+  "error": ""
+}

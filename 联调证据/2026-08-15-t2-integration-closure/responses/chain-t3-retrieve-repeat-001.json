@@ -1,0 +1,22 @@
+{
+  "status": 200,
+  "headers": {
+    "content-type": "application/json",
+    "x-trace-id": "6dae0cbe-2d23-405f-b2c8-1bf3a4f5c1e8",
+    "x-request-id": "5923a0a5-04b7-461b-8649-005dcff0f3ba"
+  },
+  "body": {
+    "chunks": [
+      {
+        "citation_id": "CIT-SRC-T2-CLOSURE-CHAIN-20260815-0001",
+        "source_id": "SRC-T2-CLOSURE-CHAIN-20260815",
+        "title": "T2 集成收口 SRC-T2-CLOSURE-CHAIN-20260815",
+        "section": "integration-closure",
+        "uri": "https://example.org/feiyi/t2-closure/src-t2-closure-chain-20260815",
+        "excerpt": "闭环剪纸工艺20260815 是非遗人工标注验收资料,用于验证 T2 与 T3 的来源和分块回链。",
+        "score": 1.0
+      }
+    ]
+  },
+  "error": ""
+}
