@@ -1,6 +1,6 @@
-source_id,title,source_uri,source_organization,accessed_at,authorization_status,review_status,notes
-PAPERCUT-UNESCO-001,"中国剪纸：项目总述",https://ich.unesco.org/en/RL/chinese-paper-cut-00219,"联合国教科文组织（UNESCO）",2026-07-28,unknown,"待项目组人工复核","用于事实核验；正文为项目组摘要，不是网页原文；公开发布许可待确认"
-PAPERCUT-YUXIAN-001,"剪纸（蔚县剪纸）：地域与技艺特点",https://www.ihchina.cn/project_details/13924.html,"中国非物质文化遗产网·中国非物质文化遗产数字博物馆",2026-07-28,unknown,"待项目组人工复核","项目页可用于核验名录信息；地方工艺细节需保护单位或传承人复核"
-PAPERCUT-YANGZHOU-001,"剪纸（扬州剪纸）：地域与艺术特点",https://www.ihchina.cn/Article/Index/detail?id=20180,"中国非物质文化遗产网·中国非物质文化遗产数字博物馆",2026-07-28,unknown,"待项目组人工复核","项目页可用于核验名录信息；流派和传承谱系需地方复核"
-PAPERCUT-YUEQING-001,"剪纸（乐清细纹刻纸）：工艺与用途",https://www.ihchina.cn/project_details/20179.html,"中国非物质文化遗产网·中国非物质文化遗产数字博物馆",2026-07-28,unknown,"待项目组人工复核","项目页可用于核验名录信息；工具、纹样和历史细节需地方复核"
-PAPERCUT-DAI-001,"剪纸（傣族剪纸）：文化环境与表现形式",https://www.ihchina.cn/project_details/13933.html,"中国非物质文化遗产网·中国非物质文化遗产数字博物馆",2026-07-28,unknown,"待项目组人工复核","涉及宗教、仪式、图案意义和禁忌时必须由当地相关人员复核"
+﻿source_id,title,source_uri,source_organization,accessed_at,authorization_status,review_status,notes
+PAPERCUT-UNESCO-001,中国剪纸：项目总述,https://ich.unesco.org/en/RL/chinese-paper-cut-00219,联合国教科文组织（UNESCO）,2026-07-28,authorized,无需额外复核,项目组已确认该网络来源整理资料可直接用于本项目；正文为项目组摘要，不是网页原文
+PAPERCUT-YUXIAN-001,剪纸（蔚县剪纸）：地域与技艺特点,https://www.ihchina.cn/project_details/13924.html,中国非物质文化遗产网·中国非物质文化遗产数字博物馆,2026-07-28,authorized,无需额外复核,项目组已确认可直接使用；当前文本限于来源支持的名录、地域与基础技艺信息
+PAPERCUT-YANGZHOU-001,剪纸（扬州剪纸）：地域与艺术特点,https://www.ihchina.cn/Article/Index/detail?id=20180,中国非物质文化遗产网·中国非物质文化遗产数字博物馆,2026-07-28,authorized,无需额外复核,项目组已确认可直接使用；当前文本限于来源支持的基础导览信息
+PAPERCUT-YUEQING-001,剪纸（乐清细纹刻纸）：工艺与用途,https://www.ihchina.cn/project_details/20179.html,中国非物质文化遗产网·中国非物质文化遗产数字博物馆,2026-07-28,authorized,无需额外复核,项目组已确认可直接使用；当前文本限于来源支持的基础工艺与用途信息
+PAPERCUT-DAI-001,剪纸（傣族剪纸）：文化环境与表现形式,https://www.ihchina.cn/project_details/13933.html,中国非物质文化遗产网·中国非物质文化遗产数字博物馆,2026-07-28,authorized,无需额外复核,项目组已确认可直接使用；涉及宗教、仪式和禁忌时不作超出来源范围的延伸解释

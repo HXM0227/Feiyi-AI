@@ -1,3 +1,18 @@
+T1 剪纸资料集 v1.0 验证报告
+
+数据更新日期：2026-08-16
+导入记录：5
+拒绝记录：0
+警告数量：0
+authorized 记录：5
+来源台账记录：5
+publish=1 记录：5
+数据版本：2026-08-16-v1.0
+
+T1 回归测试：
+
+C:\Users\sunbu\Documents\非遗AI解说\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
 test_configured_bearer_token_is_required (test_api.ApiTests.test_configured_bearer_token_is_required) ... ok
 test_correlation_headers_are_generated_when_absent (test_api.ApiTests.test_correlation_headers_are_generated_when_absent) ... ok
 test_health_and_normalize_with_correlation_headers (test_api.ApiTests.test_health_and_normalize_with_correlation_headers) ... ok
@@ -19,6 +34,8 @@ test_restricted_status_is_preserved (test_core.NormalizerTests.test_restricted_s
 test_text_normalization_is_non_semantic_and_deterministic (test_core.NormalizerTests.test_text_normalization_is_non_semantic_and_deterministic) ... ok
 
 ----------------------------------------------------------------------
-Ran 18 tests in 0.274s
+Ran 18 tests in 0.297s
 
 OK
+
+测试退出码：0

@@ -29,10 +29,10 @@ from t1.t1_service.api import create_app  # noqa: E402
 
 def main() -> None:
     payload = json.loads(REQUEST_PATH.read_text(encoding="utf-8-sig"))
-    if payload.get("publish") is not False:
-        raise RuntimeError("真实资料草稿必须保持 publish=false")
-    if any(doc.get("authorization_status") != "unknown" for doc in payload["documents"]):
-        raise RuntimeError("本批次未完成授权确认，authorization_status 必须为 unknown")
+    if payload.get("publish") is not True:
+        raise RuntimeError("当前可用版资料必须保持 publish=true")
+    if any(doc.get("authorization_status") != "authorized" for doc in payload["documents"]):
+        raise RuntimeError("当前可用版资料的 authorization_status 必须为 authorized")
 
     app = create_app()
     with TestClient(app) as client:
@@ -40,8 +40,8 @@ def main() -> None:
             "/v1/documents/normalize",
             json=payload,
             headers={
-                "X-Trace-ID": "paper-cutting-import-20260728",
-                "X-Request-ID": "paper-cutting-draft1",
+                "X-Trace-ID": "paper-cutting-import-20260816",
+                "X-Request-ID": "paper-cutting-v1.0",
             },
         )
         response.raise_for_status()
@@ -65,8 +65,10 @@ def main() -> None:
         raise RuntimeError(f"存在被拒绝资料: {result['rejected']}")
     if actual != expected:
         raise RuntimeError(f"导入记录不完整，expected={expected}, actual={actual}")
-    if len(result["warnings"]) != len(expected):
-        raise RuntimeError("每条 unknown 授权资料都应产生过滤警告")
+    if result["warnings"]:
+        raise RuntimeError(f"authorized 资料不应产生授权警告: {result['warnings']}")
+    if any(record.get("authorization_status") != "authorized" for record in result["records"]):
+        raise RuntimeError("T1 输出未完整保留 authorized 状态")
 
     print(f"Imported {len(result['records'])} records")
     print(f"Rejected {len(result['rejected'])} records")
